@@ -30,3 +30,24 @@ Use vim to create a playbook file of your choosing and enter the following. Then
    name: using apt to install sl
    register: result
 ```
+
+### SOLUTION
+
+```yaml
+---
+- name: Tuesday Challenge
+  hosts: planetexpress:!farnsworth
+  connection: ssh
+  gather_facts: yes
+
+  tasks:
+   - apt:
+       name: sl
+       state: present
+     name: using apt to install sl
+     register: result
+
+   - name: print out result
+     debug:
+       var: result.cache_update_time
+```
