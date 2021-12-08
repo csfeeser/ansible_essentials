@@ -64,3 +64,53 @@ Make the new file's name unique! Include the name of the switch somewhere in the
 #### SUPER BONUS
 
 Suppose one of the keys is not provided (such as, there is no value for `mtusize` or `switchIP`). Figure out a way to pass a *default* value instead! It doesn't matter what the default value is. You can test this by removing one of the lines from `challengevars.yml`.
+
+# SOLUTION
+Thanks for Mike Davis for providing the solution below!
+
+```
+!=== {{ switchname }} ===!
+  
+!--- IOS config ---!
+enable
+configure terminal
+hostname {{ switchname }}
+
+!--- MGMT ---!
+username {{ username }} secret alta3
+ip route 0.0.0.0 0.0.0.0 {{ defaultgateway }}
+interface Management 1
+ip address {{ switchIP }} {{ netmask }}
+mtu {{ mtusize }}
+exit
+
+!--- SSH ---!
+management ssh
+  idle-timeout 0
+  authentication mode keyboard-interactive
+  server-port {{ server_port | default(22) }} # the |default jinja2 filter will provide a value if nothing else is provided!
+  no fips restrictions
+  no hostkey client strict-checking
+  no shutdown
+  login timeout 120
+  log-level info
+exit
+exit
+write memory
+```
+
+```
+---
+- name: Jinja2 Challenge
+  hosts: localhost
+  gather_facts: no
+
+  vars_files:
+      - vars/challengevars.yml
+
+  tasks:
+      - name: Configure file using template
+         template:
+            src: templates/baseIOS.conf.j2
+            dest: "~/{{ switchname }}-config.cfg" # uses name of switch for a unique file name
+  ```
