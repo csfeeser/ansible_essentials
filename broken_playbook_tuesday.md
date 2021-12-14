@@ -31,6 +31,7 @@ Use vim to create a playbook file of your choosing and enter the following. Then
    register: result
 ```
 
+<!--
 ### SOLUTION
 
 ```yaml
@@ -51,3 +52,4 @@ Use vim to create a playbook file of your choosing and enter the following. Then
      debug:
        var: result.cache_update_time
 ```
+-->
