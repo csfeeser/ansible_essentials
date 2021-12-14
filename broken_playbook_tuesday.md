@@ -20,7 +20,7 @@ Use vim to create a playbook file of your choosing and enter the following. Then
   gather_facts: yes
 
   tasks:
-   - name: print out result
+   - name: print out the variable named "result"
      debug:
        var: result
        
