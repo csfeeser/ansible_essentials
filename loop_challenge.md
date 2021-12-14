@@ -18,6 +18,7 @@
       - { name: 'carrot', groups: 'vegetable' }
 ```
 
+<!--
 SOLUTION
 ```
 - name: looping dictionaries
@@ -37,3 +38,4 @@ SOLUTION
       - { name: 'cookie', groups: 'snack' }
       - { name: 'carrot', groups: 'vegetable' }
 ```
+-->
