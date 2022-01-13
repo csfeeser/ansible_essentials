@@ -15,7 +15,7 @@ Use vim to create a playbook file of your choosing and enter the following. Then
 ```yaml
 ---
 - name: Tuesday Challenge
-  hosts: planet express:!farnsworth
+  hosts: planet express
   connection: network_cli
   gather_facts: yes
 
