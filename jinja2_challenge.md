@@ -55,7 +55,7 @@ mtusize: 1450
 
 ### THE CHALLENGE
 
-Create a playbook that uses the template module (make sure it's in the `~/mycode` directory!). Populate the switch config file above with data from `challengevars.yml`!
+Create a playbook that uses the template module (make sure it's in the `~/mycode` directory!). Just use `localhost` as your host. Populate the switch config file above with data from `challengevars.yml` and save it to your `localhost` machine!
 
 #### BONUS
 
