@@ -2,9 +2,9 @@
 
 Using the template module in Ansible, there are MANY things we can render with Jinja! A practical example might be something like a switch config. Using the text below, create a new template that will contain a Cisco IOS switch configuration template.
 
-`student@bchd:~$` `mkdir -p ~/ans/templates/`
+`student@bchd:~$` `mkdir -p ~/mycode/templates/`
 
-`student@bchd:~$` `vim ~/ans/templates/baseIOS.conf.j2`
+`student@bchd:~$` `vim ~/mycode/templates/baseIOS.conf.j2`
 
 ```
 !=== {{ switchname }} ===!
@@ -39,9 +39,9 @@ write memory
 
 Now create a file that will contain the data you pass to this template!
 
-`student@bchd:~$` `mkdir -p ~/ans/vars/`
+`student@bchd:~$` `mkdir -p ~/mycode/vars/`
 
-`student@bchd:~$` `vim ~/ans/vars/challengevars.yml`
+`student@bchd:~$` `vim ~/mycode/vars/challengevars.yml`
 
 ```
 ---
@@ -55,7 +55,7 @@ mtusize: 1450
 
 ### THE CHALLENGE
 
-Create a playbook that uses the template module. Populate the switch config file above with data from `challengevars.yml`!
+Create a playbook that uses the template module (make sure it's in the `~/mycode` directory!). Populate the switch config file above with data from `challengevars.yml`!
 
 #### BONUS
 
