@@ -65,6 +65,7 @@ Make the new file's name unique! Include the name of the switch somewhere in the
 
 Suppose one of the keys is not provided (such as, there is no value for `mtusize` or `switchIP`). Figure out a way to pass a *default* value instead! It doesn't matter what the default value is. You can test this by removing one of the lines from `challengevars.yml`.
 
+<!--
 # SOLUTION
 Thanks for Mike Davis for providing the solution below!
 
@@ -114,3 +115,4 @@ write memory
             src: templates/baseIOS.conf.j2
             dest: "~/{{ switchname }}-config.cfg" # uses name of switch for a unique file name
   ```
+-->
