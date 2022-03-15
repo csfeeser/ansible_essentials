@@ -24,3 +24,22 @@ The following will give you a chance to write some new code that uses techniques
 
 0. Using what you learned in lab 23, replace the string `PLACEHOLDER` in the downloadme.txt file with your own name!
 
+## SOLUTION UP TO PART 3
+
+```yaml
+- name: Play- grab a file online
+  hosts: looneytunes
+  connection: ssh
+  gather_facts: no
+
+  tasks:
+  - name: create a challenge directory
+    file:
+      name: challenge
+      state: directory
+
+  - name: downloading downloadme.txt
+    get_url:
+      url: https://raw.githubusercontent.com/csfeeser/ansible_essentials/main/data/downloadme.txt
+      dest: challenge
+```
