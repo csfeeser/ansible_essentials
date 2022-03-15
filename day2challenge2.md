@@ -16,7 +16,7 @@ The following will give you a chance to write some new code that uses techniques
 0. **OPTIONAL:** Use the `ping` module in an ad hoc command to test that you added those hosts correctly!
 
 0. Write a new playbook that uses `looneytunes` as hosts. Have your playbook do the following:
-    - Create a new directory in each machine called `~/challenge`
+    - Create a new directory in each machine called `challenge`
     - Download the `downloadme.txt` file located at the following address and save it to the `~/challenge` directory you just made.
       `https://raw.githubusercontent.com/csfeeser/ansible_essentials/main/data/downloadme.txt`
 
