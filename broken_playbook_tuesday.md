@@ -64,4 +64,3 @@ Use vim to create a playbook file of your choosing and enter the following. Then
            state: present
      name: using apt to install sl
      become: true
--->
