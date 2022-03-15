@@ -20,7 +20,7 @@ The following will give you a chance to write some new code that uses techniques
     - Download the `downloadme.txt` file located at the following address and save it to the `~/challenge` directory you just made.
       `https://raw.githubusercontent.com/csfeeser/ansible_essentials/main/data/downloadme.txt`
 
-0. Run lab 23, learn how the "lineinfile" and "replace" modules work.
+0. Run lab 23, learn how the `lineinfile` and `replace` modules work.
 
-0. Using what you learned in lab 23, replace the string "PLACEHOLDER" in the downloadme.txt file with your own name!
+0. Using what you learned in lab 23, replace the string 1PLACEHOLDER1 in the downloadme.txt file with your own name!
 
