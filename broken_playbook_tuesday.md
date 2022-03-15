@@ -31,7 +31,6 @@ Use vim to create a playbook file of your choosing and enter the following. Then
    register: result
 ```
 
-<!--
 ### SOLUTION
 
 ```yaml
@@ -42,14 +41,27 @@ Use vim to create a playbook file of your choosing and enter the following. Then
   gather_facts: yes
 
   tasks:
-   - apt:
-       name: sl
-       state: present
+       
+   - apt: 
+           name: sl
+           state: present
      name: using apt to install sl
      register: result
+     become: true
 
-   - name: print out result
+   - name: print out the variable named "result"
      debug:
-       var: result.cache_update_time
-```
+       var: result
+
+- name: Tuesday Challenge
+  hosts: farnsworth
+  connection: ssh 
+  gather_facts: yes 
+
+  tasks:
+   - yum: 
+           name: sl
+           state: present
+     name: using apt to install sl
+     become: true
 -->
