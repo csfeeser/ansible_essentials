@@ -1,5 +1,7 @@
 ## Recap Challenge
 
+<img src="https://i.imgflip.com/5a2dle.jpg" width="500"/>
+
 The following will give you a chance to write some new code that uses techniques you've learned in class so far!
 
 1. Edit your inventory file. Create a new group:
