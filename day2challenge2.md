@@ -22,5 +22,5 @@ The following will give you a chance to write some new code that uses techniques
 
 0. Run lab 23, learn how the `lineinfile` and `replace` modules work.
 
-0. Using what you learned in lab 23, replace the string 1PLACEHOLDER1 in the downloadme.txt file with your own name!
+0. Using what you learned in lab 23, replace the string `PLACEHOLDER` in the downloadme.txt file with your own name!
 
