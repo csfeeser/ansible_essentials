@@ -1,6 +1,32 @@
 ## Loops Mini-Challenge
 
-Take the playbook below and edit the `msg` parameter so that it takes the `name` and `groups` value from each dictionary to complete the sentence.
+**PART 1-** Take the playbook below and use the `nineties` variable with your `file` task. Create all the directories using a for loop. Only one task is allowed!
+
+```yaml
+- name: making dirs
+  hosts: bender
+  connection: local
+  gather_facts: no
+
+  vars: 
+    nineties:
+      - Teenage
+      - Mutant
+      - Ninja
+      - Turtles
+      
+  tasks:
+
+  - name: Making directories from a list
+    file:
+      path: # add the item keyword!
+      state: directory
+    # add the loop keyword!
+```
+
+
+
+**PART 2-** Take the playbook below and edit the `msg` parameter so that it takes the `name` and `groups` value from each dictionary to complete the sentence.
 
 ```yaml
 - name: looping dictionaries
