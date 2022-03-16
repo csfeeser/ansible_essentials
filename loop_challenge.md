@@ -1,6 +1,7 @@
 ## Loops Mini-Challenge
 
-**PART 1-** Take the playbook below and use the `nineties` variable with your `file` task. Create all the directories using a for loop. Only one task is allowed!
+**PART 1-** Take the playbook below and use the `nineties` variable with your `file` task. Create all the directories using a for loop. Only one task is allowed!  
+**SUPER BONUS-** Can you make all the directories lowercase?
 
 ```yaml
 - name: making dirs
