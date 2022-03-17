@@ -55,6 +55,7 @@ Below is a snippet of tasks taken from the [Minecraft role](https://galaxy.ansib
       dest: ~/minecraft/minecraft_server.jar
 ```
 
+<!--
 ### SOLUTION
 
 ```yaml
@@ -118,3 +119,4 @@ Below is a snippet of tasks taken from the [Minecraft role](https://galaxy.ansib
       url: "{{ mc_server_link }}"
       dest: "/home/{{ ansible_user }}/minecraft/minecraft_server.jar"
 ```
+-->
