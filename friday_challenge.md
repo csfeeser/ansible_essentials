@@ -78,5 +78,6 @@ Take your pick of any of the following for part 2!
 
 #### Option 3
 
-1. The GitHub repo [https://github.com/csfeeser/mycode2](https://github.com/csfeeser/mycode2) has three files in it named `moveme1.txt`, `moveme2.txt`, and `moveme3.txt`. All three files need placed in the `/tmp` directories of all `planetexpress` hosts.
+1. The GitHub repo [https://github.com/csfeeser/mycode2](https://github.com/csfeeser/mycode2) has three files in it named `moveme1.txt`, `moveme2.txt`, and `moveme3.txt`. Clone this repo and its contents to the `/tmp` directories of all `planetexpress` hosts.
 
+0. Consider using the [ansible.builtin.git](https://docs.ansible.com/ansible/latest/collections/ansible/builtin/git_module.html) module for this one!
