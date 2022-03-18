@@ -55,9 +55,11 @@ all:
 
       - name: permit traffic in default zone for https service
         ansible.posix.firewalld:
+          zone: public
           service: https
           permanent: yes
           state: enabled
+        become: yes
     ```
 
 0. Edit this playbook so that we **loop** across the `firewall_whitelist` group var, feeding each firewall to the `service` parameter one at a time! [Read more about the firewalld module here!](https://docs.ansible.com/ansible/latest/collections/ansible/posix/firewalld_module.html)
