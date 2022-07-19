@@ -85,9 +85,9 @@ Once again this is an indentation issue. `name`,`register`, and `apt` are all ke
 
 ```yaml
    - apt:
-        name: sl
+        name: sl       # yes, name is being used twice! this is the name 'parameter' for the apt module
         state: present
-     name: using apt to install sl
+     name: using apt to install sl   # this is the name `keyword` to identify this task
      register: result
 ```
 </details>
