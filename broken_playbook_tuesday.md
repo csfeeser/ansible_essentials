@@ -12,6 +12,8 @@ Please start by getting your environment prepared:
 
 Use vim to create a playbook file of your choosing and enter the following. Then test, fix, repeat!
 
+### Debugging tip: run the playbook, see what error occurs. Then, focus on ONLY fixing that error. Then run again! Try not to introduce more errors as you go, focus on one thing at a time.
+
 ```yaml
 ---
 - name: Tuesday Challenge
