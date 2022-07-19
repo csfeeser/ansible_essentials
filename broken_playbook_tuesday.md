@@ -150,6 +150,24 @@ connection: ssh
 
 Error message:
 ```
+fatal: [farnsworth]: FAILED! => {"changed": false, "cmd": "apt-get update", "msg": "[Errno 2] No such file or directory", "rc": 2, "stderr": "", "stderr_lines": [], "stdout": "", "stdout_lines": []}
+```
+
+<details>
+<summary>Solution:</summary>
+        
+The `farnsworth` host is failing our task that uses `apt` to install an application. Oops- `farnsworth` is a CentOS machine and therefore **cannot use apt.** Since there's no way this will ever work, let's exclude `farnsworth` from this play.
+  
+```yaml
+hosts: planetexpress:!farnsworth   # target all hosts in planetexpress EXCEPT farnsworth
+```
+  
+</details>
+
+***
+
+Error message:
+```
 ok: [bender] => {
     "result": "VARIABLE IS NOT DEFINED!"
 }
