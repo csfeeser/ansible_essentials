@@ -1,5 +1,9 @@
 ## Loops Mini-Challenge
 
+<img src="https://memegenerator.net/img/instances/63216720.jpg" width="300"/>
+
+*It will definitely feel like this some days :)*
+
 ### Before you begin:
 
 Refresh your `planetexpress` hosts as well as your .ansible.cfg and inventory files.
