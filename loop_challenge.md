@@ -12,7 +12,7 @@ Refresh your `planetexpress` hosts as well as your .ansible.cfg and inventory fi
 ```yaml
 - name: making dirs
   hosts: bender
-  connection: local
+  connection: ssh
   gather_facts: no
 
   vars: 
