@@ -25,7 +25,45 @@
     # add the loop keyword!
 ```
 
+<details>
+<summary>Hint 1: Adding the `loop` keyword</summary>
+        
+```yaml
+  - name: Making directories from a list
+    file:
+      path: # add the item keyword!
+      state: directory
+    loop: "{{ nineties }}"
+```      
+</details>
 
+<details>
+<summary>Hint 2: Returning `Teenage`,`Mutant`,`Ninja`, and `Turtles`</summary>
+
+When using a loop, each item returned is represented by the variable `{{ item }}`!
+  
+```yaml
+  - name: Making directories from a list
+    file:
+      path: "{{ item }}"
+      state: directory
+    loop: "{{ nineties }}"
+```      
+</details>
+
+<details>
+<summary>Hint 3: Making directory names lowercase</summary>
+
+This is a topic we'll explore in greater detail later-- but Jinja2 has what are known as **filters** that can change objects. In this case, the [|lower](http://www.freekb.net/Article?id=2574) filter will do the job!
+  
+```yaml
+  - name: Making directories from a list
+    file:
+      path: "{{ item | lower }}"
+      state: directory
+    loop: "{{ nineties }}"
+```      
+</details>
 
 **PART 2-** Take the playbook below and edit the `msg` parameter so that it takes the `name` and `groups` value from each dictionary to complete the sentence.
 
