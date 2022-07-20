@@ -1,5 +1,11 @@
 ## Loops Mini-Challenge
 
+### Before you begin:
+
+Refresh your `planetexpress` hosts as well as your .ansible.cfg and inventory files.
+
+`student@bchd:~$` `cd && wget https://labs.alta3.com/projects/ansible/deploy/setup.sh -qO setup.sh && bash setup.sh`
+
 **PART 1-** Take the playbook below and use the `nineties` variable with your `file` task. Create all the directories using a for loop. Only one task is allowed!  
 **SUPER BONUS-** Can you make all the directories lowercase?
 
