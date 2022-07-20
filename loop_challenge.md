@@ -65,6 +65,8 @@ This is a topic we'll explore in greater detail later-- but Jinja2 has what are 
 ```      
 </details>
 
+***
+
 **PART 2-** Take the playbook below and edit the `msg` parameter so that it takes the `name` and `groups` value from each dictionary to complete the sentence.
 
 ```yaml
