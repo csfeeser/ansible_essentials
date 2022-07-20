@@ -85,24 +85,37 @@ This is a topic we'll explore in greater detail later-- but Jinja2 has what are 
       - { name: 'carrot', groups: 'vegetable' }
 ```
 
-<!--
-SOLUTION
+<details>
+<summary>Hint 1: Using Dot Notation</summary>
+
+Our loop is going over a sequence (aka array/list) of mappings (aka object/dictionary). From each mapping in that list, we want to return the value of `name` and the value of `groups`.  
+Here's a breakdown of how `item` would be sliced using dot notation.
+  
 ```
-- name: looping dictionaries
-  hosts: localhost
-  connection: local
-  gather_facts: no
+item.name = banana
+item.groups = fruit
+item.name = rousing game of Monopoly
+item.groups = pastime
+item.name = cookie
+item.groups = snack
+item.name = carrot
+item.groups = vegetable
+```
+  
+</details>
 
-  tasks:
+<details>
+<summary>Hint 2: Using Dot Notation with our Loop</summary>
 
+```
   - name: Loop across complex data structures
     debug:
       msg: "A {{ item.name }} is my favorite {{ item.groups }}!"
     loop:
-      # what is returned is rep. by "item"
       - { name: 'banana', groups: 'fruit' }
       - { name: 'rousing game of Monopoly', groups: 'pastime' }
       - { name: 'cookie', groups: 'snack' }
       - { name: 'carrot', groups: 'vegetable' }
 ```
--->
+  
+</details>
