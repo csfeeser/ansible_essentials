@@ -55,16 +55,37 @@ mtusize: 1450
 
 ### THE CHALLENGE
 
-Create a playbook that uses the template module (make sure it's in the `~/mycode` directory!). Just use `localhost` as your host. Populate the switch config file above with data from `challengevars.yml` and save it to your `localhost` machine!
+Create a playbook that:
+- uses the template module (make sure it's in the `~/mycode` directory!)
+- uses `localhost` as your host
+- populate the switch config file above with data from `challengevars.yml`
+- save the completed config file to your `localhost` machine!
 
 #### BONUS
 
 Make the new file's name unique! Include the name of the switch somewhere in the file name.
 
+<details>
+<summary>Solution:</summary>
+ 
+```yaml
+   dest: "{{switchname}}.cfg"
+```      
+  
+</details>
+
 #### SUPER BONUS
 
 Suppose one of the keys is not provided (such as, there is no value for `mtusize` or `switchIP`). Figure out a way to pass a *default* value instead! It doesn't matter what the default value is. You can test this by removing one of the lines from `challengevars.yml`.
 
+<details>
+<summary>Solution:</summary>
+ 
+Check out the `| default` filter! https://docs.ansible.com/ansible/latest/user_guide/playbooks_filters.html#providing-default-values
+  
+</details>
+
+<!--
 # SOLUTION
 Thanks for Mike Davis for providing the solution below!
 
