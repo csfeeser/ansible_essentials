@@ -98,7 +98,7 @@ The offending line appears to be:
 <details>
 <summary>Solution:</summary>
         
-Once again this is an indentation issue. `name`,`register`, and `apt` are all keywords and should have the same indentation. Change it to this:
+Once again this is an indentation issue. `name`,`register`, and `apt` are all task keywords and should have the same indentation. Change it to this:
 
 ```yaml
    - apt:
