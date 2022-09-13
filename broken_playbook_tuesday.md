@@ -10,6 +10,21 @@ Please start by getting your environment prepared:
 
 `student@bchd:~$` `cd && wget https://labs.alta3.com/projects/ansible/deploy/setup.sh && bash setup.sh`
 
+If you're getting tired of seeing cows from `cowsay` yesterday, run this in your bchd machine:
+
+`student@bchd:~$` `sudo apt remove cowsay -y`
+
+```
+ _________________
+< how dare youuuu >
+ -----------------
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+```
+
 Use vim to create a playbook file of your choosing and enter the following. Then test, fix, repeat!
 
 ### Debugging tip: run the playbook, see what error occurs. Then, focus on ONLY fixing that error. Then run again! Try not to introduce more errors as you go, focus on one thing at a time.
