@@ -38,14 +38,14 @@ Use vim to create a playbook file of your choosing and enter the following. Then
 
   tasks:
    - name: print out the variable named "result"
-     debug:
-       var: result
+     debug: # the debug module is similar to print() in python-- it prints stuff out!
+       var: result # displaying the value of the variable "result"
        
-   -apt:
+   -name: using apt to install sl
+     apt:
         name: sl
        state: present
-   name: using apt to install sl
-   register: result
+   register: result  # <-- this is new! "register" is creating a variable named "result" which contains the output from this task
 ```
 
 ## HINTS!
@@ -53,13 +53,13 @@ Use vim to create a playbook file of your choosing and enter the following. Then
 Error message:
 ```
 The offending line appears to be:
-   -apt:
+   -name:
    ^ here
 ```
 <details>
 <summary>Solution:</summary>
         
-Change `-apt` to `- apt`. Always put a whitespace after a `-` in YAML!
+Change `-name` to `- name`. Always put a whitespace after a `-` in YAML!
       
 </details>
 
