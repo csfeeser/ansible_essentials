@@ -1,10 +1,14 @@
-## Recap Challenge
+## Morning Warmup, Day Three!
 
 <img src="https://i.imgflip.com/5a2dle.jpg" width="500"/>
 
 The following will give you a chance to write some new code that uses techniques you've learned in class so far!
 
-1. Edit your inventory file. Create a new group:
+1. We'll be using the planetexpress team for this warmup! Run the command below to prepare your environment.
+
+    `student@bchd:~$` `cd && wget https://labs.alta3.com/projects/ansible/deploy/setup.sh -qO setup.sh && bash setup.sh`
+
+0. Edit your inventory file (`~/mycode/inv/dev/hosts`). Add the following to it:
 
     ```
     [looneytunes]
@@ -13,19 +17,17 @@ The following will give you a chance to write some new code that uses techniques
     daffy       ansible_host=10.10.2.5 ansible_user=zoidberg ansible_python_interpreter=/usr/bin/python3
     ```
     
-0. **OPTIONAL:** Use the `ping` module in an ad hoc command to test that you added those hosts correctly!
+0. Use the `ping` module in an **ad hoc command** to test that you added those hosts correctly! **See Lab 15!**
 
 0. Write a new playbook that uses `looneytunes` as hosts. Have your playbook do the following:
-    - Create a new directory in each machine called `challenge`
-    - Download the `downloadme.txt` file located at the following address and save it to the `~/challenge` directory you just made.
-      `https://raw.githubusercontent.com/csfeeser/ansible_essentials/main/data/downloadme.txt`
+    - Create a new directory in each machine called `challenge`. **Use the file module.**
+    - Download the `downloadme.txt` file located at the following address and save it to the `~/challenge` directory you just made on each machine. **Use the get_url module.**
+        - `https://raw.githubusercontent.com/csfeeser/ansible_essentials/main/data/downloadme.txt`
 
-0. Run lab 23, learn how the `lineinfile` and `replace` modules work.
-
-0. Using what you learned in lab 23, replace the string `PLACEHOLDER` in the downloadme.txt file with your own name!
+0. Use the **replace module** (lab 23) to replace the string `PLACEHOLDER` in the downloadme.txt file with your own name!
 
 <!--
-## SOLUTION UP TO PART 3
+## SOLUTION:
 
 ```yaml
 - name: Play- grab a file online
@@ -43,4 +45,11 @@ The following will give you a chance to write some new code that uses techniques
     get_url:
       url: https://raw.githubusercontent.com/csfeeser/ansible_essentials/main/data/downloadme.txt
       dest: challenge
+
+  - name: swap out PLACEHOLDER for "Chad"
+    replace:
+      path: ~/challenge/downloadme.txt
+      regexp: "PLACEHOLDER"
+      replace: "Chad"
+      backup: yes
 ```
