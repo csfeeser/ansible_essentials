@@ -1,6 +1,6 @@
 ## Morning Warmup, Day Three!
 
-<img src="https://i.imgflip.com/5a2dle.jpg" width="500"/>
+<img src="https://miro.medium.com/max/1200/1*sssWakAf5erMGDqt9GACVA.jpeg" width="300"/>
 
 The following will give you a chance to write some new code that uses techniques you've learned in class so far!
 
