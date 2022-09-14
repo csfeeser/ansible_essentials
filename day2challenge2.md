@@ -26,7 +26,6 @@ The following will give you a chance to write some new code that uses techniques
 
 0. Use the **replace module** (lab 23) to replace the string `PLACEHOLDER` in the downloadme.txt file with your own name!
 
-<!--
 ## SOLUTION:
 
 ```yaml
@@ -36,7 +35,7 @@ The following will give you a chance to write some new code that uses techniques
   gather_facts: no
 
   tasks:
-  - name: create a challenge directory
+  - name: create a chaCancelllenge directory
     file:
       name: challenge
       state: directory
