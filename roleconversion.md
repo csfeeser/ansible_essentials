@@ -4,7 +4,11 @@ Below you will find a familiar looking playbook. YOUR GOAL is to:
 - Convert the playbook below into a role
 - Call your newly created role from a second playbook.
 
-1. First, create your new role's directory structure.
+1. First, create a directory for your role to be stored in.
+
+    `student@bchd:~$` mkdir -p ~/galaxy/roles/`
+    
+0. First, create your new role's directory structure.
 
     `student@bchd:~$` `ansible-galaxy init ~/galaxy/roles/challenge`
     
@@ -14,7 +18,7 @@ Below you will find a familiar looking playbook. YOUR GOAL is to:
     
 0. If you haven't yet, install the `tree` application, it can really help!
 
-    `student@bchd:~/galaxy/roles/challenge$` `sudo apt install tree`
+    `student@bchd:~/galaxy/roles/challenge$` `sudo apt install tree -y`
     
 0. Here's a hint: you will need to edit `vars/main.yml`, `tasks/main.yml`, and `handlers/main.yml`. All other directories in your role can be removed if you wish. Happy cut/pasting!
 
