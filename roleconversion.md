@@ -6,7 +6,7 @@ Below you will find a familiar looking playbook. YOUR GOAL is to:
 
 1. First, create a directory for your role to be stored in.
 
-    `student@bchd:~$` mkdir -p ~/galaxy/roles/`
+    `student@bchd:~$` `mkdir -p ~/galaxy/roles/`
     
 0. First, create your new role's directory structure.
 
