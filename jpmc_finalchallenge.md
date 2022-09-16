@@ -20,6 +20,7 @@ Edit your role to include the following:
 - Include the following variables:
 
     ```
+    elementsw_mvip: 8.8.8.8
     elementsw_password: SEE THE NEXT STEP
     elementsw_hostname: 1.187.255.255
     elementsw_username: awesomestudent
@@ -40,6 +41,62 @@ Edit your role to include the following:
         - Create a new policy named `platinum`.
         - When setting QOS, use the `policysettings` var you made earlier.
     - **Choose ONE ADDITIONAL module** from the netapp.elementsw collection
+
+### SOLUTION:
+
+**vars/main.yml**
+```yaml
+---
+# vars file for lastdayrole
+elementsw_mvip: 8.8.8.8
+elementsw_password: SEE THE NEXT STEP
+elementsw_hostname: 1.187.255.255
+elementsw_username: awesomestudent
+node-ids: ["1.22.0.1", "1.22.0.2", "1.22.0.3"]
+policysettings: {minIOPS: 100, maxIOPS: 5000, burstIOPS: 20000}
+elementsw_password: !vault |
+          $ANSIBLE_VAULT;1.1;AES256
+          39393666666235663837306538653761353335383366323966333036613666636439633762313730
+          3230663165623837663933303136613637373634316634380a393632383365633430313632623061
+          61323463336639653865323661386333336562633864646639303764666265663535386434643063
+          6539626466373164300a376530396230613634623133393735386564666364616566626164323833
+```
+
+**tasks/main.yml**
+```yaml
+---
+# tasks file for lastdayrole
+- name: get all available subsets
+  na_elementsw_info:
+    hostname: "{{ elementsw_mvip }}"
+    username: "{{ elementsw_username }}"
+    password: "{{ elementsw_password }}"
+    gather_subsets: all
+  register: result
+
+- debug:
+    var: result
+    verbosity: 2
+
+- name: Add node from pending to active cluster
+  tags:
+  - elementsw_add_node
+  na_elementsw_node:
+    hostname: "{{ elementsw_hostname }}"
+    username: "{{ elementsw_username }}"
+    password: "{{ elementsw_password }}"
+    state: present
+    node_id: "{{ node-ids }}"
+
+- name: Add QOS Policy
+  na_elementsw_qos_policy:
+    hostname: "{{ elementsw_hostname }}"
+    username: "{{ elementsw_username }}"
+    password: "{{ elementsw_password }}"
+    state: present
+    name: platinum
+    qos: "{{ policysettings }}"
+```
 
 ### WHEN YOU ARE FINISHED:
 
