@@ -13,7 +13,7 @@ Let's build something practical that you can potentially take back to your team(
 **This will be a read-only playbook, as we don't have the appropriate environment.**
 Do the following prior to editing your role:
 - go to Ansible Galaxy and install the `netapp.elementsw` collection.
-- [CLICK HERE](https://docs.ansible.com/ansible/devel/collections/netapp/elementsw/) for the documentation on each role in this collection.
+- [CLICK HERE](https://docs.ansible.com/ansible/devel/collections/netapp/elementsw/) for the documentation on each module in this collection.
 
 Edit your role to include the following:
 
@@ -32,7 +32,7 @@ Edit your role to include the following:
 - Add tasks using the following modules. Whenever you need authentication for username/password, use the vars above.
     - `netapp.elementsw.na_elementsw_info`
         - Use this module to gather info about your cluster (`gather_facts` won't work as well as this!)
-        - save the output from thid task using the `register` keyword in a variable named `results`
+        - save the output from this task using the `register` keyword in a variable named `results`
         - add a debug task that prints the `results` variable afterward.
     - `na_elementsw_node`
         - Add nodes to your cluster. Use the IP addresses in the `node-ids` var you made earlier.
