@@ -55,4 +55,4 @@ Edit your role to include the following:
 
 `ansible-galaxy collection install awesomestudent-myfirstcollection-1.0.0.tar.gz`
 
-Congrats! You've built a role, added it to a collection, and then INSTALLED that collection; it's now able to be used on this controlled and shared with others! :)
+Congrats! You've built a role, added it to a collection, and then INSTALLED that collection; it's now able to be used on this controller and shared with others! :)
