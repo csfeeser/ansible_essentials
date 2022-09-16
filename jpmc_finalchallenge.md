@@ -49,7 +49,6 @@ Edit your role to include the following:
 ---
 # vars file for lastdayrole
 elementsw_mvip: 8.8.8.8
-elementsw_password: SEE THE NEXT STEP
 elementsw_hostname: 1.187.255.255
 elementsw_username: awesomestudent
 node-ids: ["1.22.0.1", "1.22.0.2", "1.22.0.3"]
