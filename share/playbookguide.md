@@ -1,3 +1,29 @@
+#### AD-HOC Ansible Command (aka Ansible without a Playbook)
+```
+ansible planetexpress -m command -a "whoami" -i ~/mycode/inv/dev/hosts"
+        ^ HOST(S)      ^          ^           ^
+                       module     |           |
+                                  argument/   inventory file location
+                                  parameter
+```
+
+#### PLAYBOOK GUIDE
+```yaml
+- name: demo             #OVERALL GOAL OF THE PLAY
+  hosts: planetexpress   #ALL THE HOSTS YOU WISH TO TARGET
+  connection: ssh        #LINUX HOSTS? ssh. ROUTERS? network_cli. WINDOWS MACHINE? winrm.
+  gather_facts: no       #SHOULD ANSIBLE GATHER INFO ON THOSE HOSTS?
+    
+  tasks:                 #LISTING ALL THE TASKS YOU'D LIKE TO RUN AGAINST HOSTS
+  
+  - name: task1          #GOAL OF THE TASK
+    apt:                 #NAME OF THE MODULE
+      update_cache: true #PARAMETER OF THIS MODULE
+    become: yes          #SHOULD THIS TASK BE EXECUTED WITH "ROOT" PRIVILEGE?
+```
+
+<!--
+#### PLAYBOOK GUIDE
 ```yaml
 - name: demo             #OVERALL GOAL OF THE PLAY
   hosts: planetexpress   #ALL THE HOSTS YOU WISH TO TARGET
@@ -26,3 +52,4 @@
     when: x == y         #WHAT CONDITION NEEDS TO BE TRUE FOR THIS TASK TO RUN
     register: rez        #SAVE OUTPUT FROM THIS TASK INTO A VARIABLE
 ```
+-->
