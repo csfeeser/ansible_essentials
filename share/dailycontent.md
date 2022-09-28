@@ -1,4 +1,4 @@
-## TUESDAY CONCEPTS:
+### TUESDAY CONCEPTS:
 ---
 
 ```
@@ -26,4 +26,32 @@ lineinfile  find/replace ONE string in a file
 replace     find/replace ALL strings in a file
 git         use git commands on remote machines
 htpasswd    updates the htpasswd password file
+```
+
+### WEDNESDAY CONCEPTS:
+---
+```
+variable precedence- variables can be set in 22 different places; 
+                     which variable value "wins" is based on its location in that hierarchy
+
+JINJA2:
+{{ var }}     return value of variable
+{% if/for %}  setting logic (loops,conditions) in template
+
+NEW PLAY KEYWORDS:
+vars_prompt   prompt user for variable value
+handlers      tasks that can be notified to run after changes occur
+
+NEW BLOCK KEYWORDS:
+block         just a group of tasks
+rescue        task(s) that run after an error occurs in the block
+always        task(s) that always run, error or no error
+
+NEW TASK KEYWORDS:
+tags          cherry-picking which tasks do/don't run
+
+NEW MODULES:
+template      combines a jinja2 template with Ansible vars
+service       starts/stops/restarts services
+package       auto-detects yum vs. apt for installing apps!
 ```
