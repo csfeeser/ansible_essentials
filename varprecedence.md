@@ -14,3 +14,5 @@ Take this tiny playbook. Define a variable named `smurfs` in each one. HOWEVER, 
 
   tasks:
 ```
+
+Add `smurfs=blue` to the bender line in your inventory file!
