@@ -26,7 +26,6 @@ The following will give you a chance to write some new code that uses techniques
 
 0. Use the **replace module** (lab 24) to replace the string `PLACEHOLDER` in the downloadme.txt file with your own name!
 
-<!--
 ## SOLUTION:
 
 ```yaml
