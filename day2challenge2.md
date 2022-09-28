@@ -52,3 +52,36 @@ The following will give you a chance to write some new code that uses techniques
       replace: "Chad"
       backup: yes
 ```
+
+### IDEMPOTENT SOLUTION
+
+```yaml
+  hosts: looneytunes
+  connection: ssh
+  gather_facts: no
+
+  tasks:
+
+    - name: Create a directory if it does not exist
+      file:
+        path: challenge
+        state: directory
+
+    - name: Download file
+      get_url:
+        url: https://raw.githubusercontent.com/csfeeser/ansible_essentials/main/data/downloadme.txt
+        dest: challenge/downloadme.txt
+
+    - name: make a copy
+      copy:
+          src: challenge/downloadme.txt
+          dest: challenge/downloadme_edit.txt
+          force: no  # it doesn't matter if the content is changed, only if the file exists
+          remote_src: yes
+
+    - name: swap PLACEHOLDER for Chad
+      replace:
+        path: challenge/downloadme_edit.txt
+        regexp: 'PLACEHOLDER'
+        replace: 'Chad'
+```
