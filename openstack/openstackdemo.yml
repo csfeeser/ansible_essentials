@@ -1,0 +1,102 @@
+---
+- name: Launch a cloud instance
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  vars:
+
+    state: "present"
+    student_number: "42"
+    student_name: authurDent
+    public_key:  "{{ lookup('file', '/home/student/.ssh/id_rsa.pub') }}"
+
+  tasks:
+
+    # remove the rotten cirros image that ships with openstack image
+    - name: REMOVE the cirros VM image that ships with OpenStack
+      os_image:
+        cloud: ansible_playground
+        name: cirros
+        state: absent
+
+    - name: Download cirros VM image
+      get_url:
+        url: "http://download.cirros-cloud.net/0.3.4/cirros-0.3.4-x86_64-disk.img"
+        dest: ~/cirros.img
+
+    # UPLOAD AN IMAGE FROM AN HTTPS SITE
+    - name: UPLOAD a new cirros VM image to OpenStack
+      os_image:
+        cloud: ansible_playground
+        name: cirros
+        container_format: bare
+        disk_format: qcow2
+        state: present
+        filename: "cirros.img"
+        kernel: cirros-vmlinuz
+        ramdisk: cirros-initrd
+        properties:
+          cpu_arch: x86_64
+          distro: ubuntu
+
+
+    - name: Upload a Key Pair to OpenStack cloud
+      os_keypair:
+        cloud: "ansible_playground"  # this is a reference to clouds.yml
+        state: "{{ state }}"                 # we want the key pair to be present
+        name: "ansible-key-{{ student_name }}"   # unique name for our key
+        public_key: "{{ public_key }}"           # ref to our public key var
+
+    - os_security_group:
+        cloud: ansible_playground
+        state: present
+        name: ansible-42-sg
+        description: security group for foo servers
+
+    - os_security_group_rule:
+        cloud: ansible_playground
+        security_group: ansible-42-sg
+        protocol: icmp
+        port_range_min: -1
+        port_range_max: -1
+        remote_ip_prefix: 0.0.0.0/0
+
+    - os_security_group_rule:
+        cloud: ansible_playground
+        security_group: ansible-42-sg
+        protocol: tcp
+        port_range_min: 1
+        port_range_max: 65535
+        remote_ip_prefix: 0.0.0.0/0
+
+    - name: Launch an OpenStack VM
+      os_server:
+        cloud: "ansible_playground"
+        state: "{{ state }}"
+        name:  "ansible-{{ student_number }}"   # name of VM we are building
+        image: "cirros"                         # name of a VM image
+        flavor: "m1.tiny"                       # size of the VM to be built
+        network: "demo-net"
+        key_name: "ansible-key-{{ student_name }}"  # we just made this
+        meta:
+           type: "ansible-{{ student_number }}"
+           class: "ansible"
+           student_name: "{{ student_name }}"
+           student_number: "{{ student_number }}"
+           bootstrapped: "false"
+           configured: "false"
+           hostname: "ansible-{{ student_number }}"
+        auto_ip: no
+        wait: yes
+        timeout: 600
+      register: instances                       # save the results that are returned
+
+    - name: assign floating ip
+      os_floating_ip:
+          cloud: ansible_playground
+          server: ansible-42
+
+    - name: Show the results of building our VM
+      debug:
+        msg: "{{ instances }}"
