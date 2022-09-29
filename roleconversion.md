@@ -22,7 +22,7 @@ Below you will find a familiar looking playbook. YOUR GOAL is to:
     
 0. We need a file named `index.html` for this playbook to work! Run the following command:
 
-`echo "'Hello world!'" > ~/galaxy/roles/challenge/files/index.html`
+    `echo "Hello world!" > ~/galaxy/roles/challenge/files/index.html`
 
 0. Here's a hint: you will need to edit `vars/main.yml`, `tasks/main.yml`, and `handlers/main.yml`. All other directories in your role can be removed if you wish. Happy cut/pasting!
 
