@@ -16,7 +16,7 @@ Please make the following improvements to this playbook:
 
 0. The task "Restart fail2ban" is a conditional task... we only need this task to run if a change to the app `fail2ban` has occurred. Change this task to a handler that is notified by the task "Copy fail2ban (ssh protection)".
 
-0. The variable `mc_server_link` is not defined in this playbook. It's not an ideal use of the tool, but pass the url for this variable as a `vars_prompt`. The url is `https://launcher.mojang.com/v1/objects/3cf24a8694aca6267883b17d934efacc5e44440d/server.jar`
+0. The variable `mc_server_link` is not defined in this playbook. It's not an ideal use of the tool, but pass the url for this variable as a `vars_prompt`. The url is `https://launcher.mojang.com/v1/objects/3cf24a8694aca6267883b17d934efacc5e44440d/server.jar` Maybe put that as the `default` parameter value?
 
 0. Add some tags! You may wish to use them in a practical manner while troubleshooting this playbook. 
 
