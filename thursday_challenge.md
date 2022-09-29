@@ -59,6 +59,7 @@ Please make the following improvements to this playbook:
       dest: /home/{{ ansible_user }}/minecraft/minecraft_server.jar
 ```
 
+<!--
 ### SOLUTION
 
 ```yaml
