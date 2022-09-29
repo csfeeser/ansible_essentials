@@ -55,3 +55,36 @@ template      combines a jinja2 template with Ansible vars
 service       starts/stops/restarts services
 package       auto-detects yum vs. apt for installing apps!
 ```
+
+### THURSDAY CONCEPTS:
+---
+```
+THURSDAY CONTENT
+================
+5 Phases of Self Healing Playbooks:
+Provisioning       grab/download/read in all your data
+Pre-check          set up "fail points" for bogus hosts
+Maintenance        making actual changes
+Post-check         confirming the changes stuck/are good
+Post-Provisioning  leave output describing how things went
+
+PLAY KEYWORDS:
+roles              highly organized re-usable playbooks
+
+NEW COMMANDS:
+ansible-galaxy collection install  downloads/installs a collection of  
+                                   modules/plugins/roles
+ansible-galaxy role init           builds a role file structure to fill out
+
+CLOUD:
+localhost/local    hosts/connection for cloud configuration
+openstacksdk       sends HTTP to openstack on behalf of ansible
+boto3              sends HTTP to AWS on behalf of ansible
+azuresdk           sends HTTP to azure on behalf of ansible
+collections        need appropriate collection for your specific vendor; go to Ansible Galaxy
+
+NEW MODULES:
+service_facts       gather state info about all services on host
+import_role         call role as task; load role when playbook starts
+include_role        call role as task; load role when ENCOUNTERED
+```
