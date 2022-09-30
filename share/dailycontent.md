@@ -88,3 +88,31 @@ service_facts       gather state info about all services on host
 import_role         call role as task; load role when playbook starts
 include_role        call role as task; load role when ENCOUNTERED
 ```
+
+### FRIDAY CONCEPTS
+---
+```
+module   python code executed on hosts
+plugin   endows Ansible with more capability
+
+ANSIBLE.CFG
+log_path         when specified, puts ansible output to this file path
+
+TASK KEYWORDS
+no_log: true     tells ansible to NOT add this task's output to logs
+
+VAR CREATION
+lookup() plugin  allows reading in the content of data
+
+NETWORKING
+network_cli      connection required for accessing network hosts
+collections      ONLY use collections designed for networking
+*_facts          most networking collections have this module to gather facts
+ansible_network_os      set this when using "gather_facts" on network hosts
+ansible_become_method   this must be "enable" for network hosts
+
+VAULT
+ansible-vault encrypt  encrypt files or strings for security purposes
+ansible-vault edit     temporarily unencrypt a file to view/edit it
+--ask-vault-pass       flag to prompt for a password for encrypted content
+```
