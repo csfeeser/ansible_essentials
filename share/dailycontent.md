@@ -59,8 +59,6 @@ package       auto-detects yum vs. apt for installing apps!
 ### THURSDAY CONCEPTS:
 ---
 ```
-THURSDAY CONTENT
-================
 5 Phases of Self Healing Playbooks:
 Provisioning       grab/download/read in all your data
 Pre-check          set up "fail points" for bogus hosts
