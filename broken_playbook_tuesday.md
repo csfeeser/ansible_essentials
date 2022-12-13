@@ -47,3 +47,24 @@ Use vim to create a playbook file of your choosing and enter the following. Then
        dest: challenge
        state: directry
 ```
+
+### SOLUTION
+
+```yaml
+---
+- name: Tuesday Challenge
+  hosts: planetexpress
+  connection: ssh 
+  gather_facts: yes 
+
+  tasks:
+   - name: create a directory
+     file: 
+       dest: challenge
+       state: directory
+
+   - name: creating a file
+     copy:
+       dest: challenge/challengefile.txt
+       content: "Success!"
+```
