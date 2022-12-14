@@ -6,7 +6,7 @@ The following will give you a chance to write some new code that uses techniques
 
 1. We'll be using the planetexpress team for this warmup! Run the command below to prepare your environment.
 
-    `student@bchd:~$` `cd && wget https://labs.alta3.com/projects/ansible/deploy/setup.sh -qO setup.sh && bash setup.sh`
+    `student@bchd:~$` `bash ~/px/scripts/full-setup.sh`
 
 0. Edit your inventory file (`~/mycode/inv/dev/hosts`). Add the following to it:
 
