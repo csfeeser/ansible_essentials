@@ -8,7 +8,7 @@ The following will give you a chance to write some new code that uses techniques
 
     `student@bchd:~$` `bash ~/px/scripts/full-setup.sh`
 
-0. Edit your inventory file (`~/mycode/inv/dev/hosts`). Add the following to it:
+0. Edit your inventory file (`~/mycode/inv/dev/hosts`). **Add/append** the following to it (do not remove anything from your inventory file):
 
     ```
     [looneytunes]
