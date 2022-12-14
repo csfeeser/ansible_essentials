@@ -17,7 +17,7 @@ The following will give you a chance to write some new code that uses techniques
     daffy       ansible_host=10.10.2.5 ansible_user=zoidberg ansible_python_interpreter=/usr/bin/python3
     ```
     
-0. Use the `ping` module in an **ad hoc command** to test that you added those hosts correctly! **See Lab 15!**
+0. Use the `ping` module in an **ad hoc command** to test that you added those hosts correctly! **See Lab 15, Step 11!**
 
 0. Write a new playbook that uses `looneytunes` as hosts. Have your playbook do the following:
     - Create a new directory in each machine called `challenge`. **Use the file module.**
