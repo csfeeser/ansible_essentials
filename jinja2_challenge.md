@@ -1,6 +1,6 @@
 ## Jinja2 Morning Warmup!
 
-<img src="https://www.automateyournetwork.ca/wp-content/uploads/2020/12/image-18.png" width="500"/>
+<img src="https://www.automateyournetwork.ca/wp-content/uploads/2020/12/image-18.png" width="300"/>
 
 
 Using the template module in Ansible, there are MANY things we can render with Jinja! A practical example might be something like a switch config. Using the text below, create a new template that will contain a Cisco IOS switch configuration template.
