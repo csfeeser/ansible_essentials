@@ -15,8 +15,11 @@ Below you will find a familiar looking playbook. YOUR GOAL is to:
 0. Move into your new role.
 
     `student@bchd:~$` `cd ~/galaxy/roles/challenge`
-    
-0. If you haven't yet, install the `tree` application, it can really help!
+
+0. Update your ansible.cfg file so that it knows to look in this directory to find/use your role!
+
+    `student@bchd:~/galaxy/roles/challenge$` `echo "roles_path=~/galaxy/roles/" >> ~/.ansible.cfg`
+2. If you haven't yet, install the `tree` application, it can really help!
 
     `student@bchd:~/galaxy/roles/challenge$` `sudo apt install tree -y`
     
