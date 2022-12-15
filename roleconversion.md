@@ -80,23 +80,6 @@ Below you will find a familiar looking playbook. YOUR GOAL is to:
         - restart_apache   # ONLY restart apache if this conf
                            # file needs updated
 
-  # ensure the MySQL service is up and running
-  - name: MySQL (MariaDB) is running
-    service:
-      name: mysql
-      enabled: yes
-      state: started
-
-  # if this line needs added to my.cnf
-  # then ONLY the MySQL service needs restarted
-  - name: Modify SQL conf file to listen on all interfaces
-    lineinfile:
-      dest: /etc/mysql/my.cnf
-      regexp: "^bind-address"
-      line: "bind-address=0.0.0.0"
-    notify:
-      - restart_mysql
-
   # This will ONLY run if the associated tasks run
   # no matter how many times called these tasks
   # will ONLY run once
