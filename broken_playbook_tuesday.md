@@ -48,7 +48,6 @@ Use vim to create a playbook file of your choosing and enter the following. Then
        state: directry
 ```
 
-<!--
 ### SOLUTION
 
 ```yaml
