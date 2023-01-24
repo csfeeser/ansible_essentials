@@ -8,7 +8,7 @@ Good morning! To get the blood moving today we'll start with a familiar looking 
 
 Please start by getting your environment prepared:
 
-`student@bchd:~$` `cd && wget https://labs.alta3.com/projects/ansible/deploy/setup.sh && bash setup.sh`
+`student@bchd:~$` `bash ~/px/scripts/full-setup.sh`
 
 If you're getting tired of seeing cows from `cowsay` yesterday, run this in your bchd machine:
 
