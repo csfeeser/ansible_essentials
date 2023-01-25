@@ -1,0 +1,16 @@
+# taken from https://phoenixnap.com/kb/ansible-check-if-file-exists
+
+- name: Playbook name
+  hosts: all
+
+  tasks:
+  - name: Task name
+    stat:
+      path: [path to the file or directory you want to check]
+    register: register_name
+
+    - name: Task name 2
+      file:
+        path: [path to the file you want to create]
+        state: touch
+      when: not register_name.stat.exists
