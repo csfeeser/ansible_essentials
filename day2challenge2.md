@@ -23,7 +23,6 @@ The following will give you a chance to write some new code that uses techniques
     - Create a new directory in each machine called `challenge`. **Use the file module.**
     - Download the `downloadme.txt` file located at the following address and save it to the `~/challenge` directory you just made on each machine. **Use the get_url module.**
         - `https://raw.githubusercontent.com/csfeeser/ansible_essentials/main/data/downloadme.txt`
-    > Side note: be sure to consider the importance of the [force parameter.](https://docs.ansible.com/ansible/latest/collections/ansible/builtin/get_url_module.html#parameter-force)
 
 **BONUS-** Use the **replace module** (lab 24) to replace the string `PLACEHOLDER` in the downloadme.txt file with your own name!
 
