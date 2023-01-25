@@ -8,7 +8,7 @@ The following will give you a chance to write some new code that uses techniques
 
     `student@bchd:~$` `bash ~/px/scripts/full-setup.sh`
 
-0. Edit your inventory file (`~/mycode/inv/dev/hosts`). **Add/append** the following to it (do not remove anything from your inventory file):
+0. Edit your inventory file (`~/mycode/inv/dev/hosts`). **Append** the following to it (do not remove anything from your inventory file):
 
     ```
     [looneytunes]
@@ -17,15 +17,27 @@ The following will give you a chance to write some new code that uses techniques
     daffy       ansible_host=10.10.2.5 ansible_user=zoidberg ansible_python_interpreter=/usr/bin/python3
     ```
     
-0. Use the `ping` module in an **ad hoc command** to test that you added those hosts correctly! **See Lab 15, Step 11!**
+0. Use the `ping` module in an **ad hoc command** to test that you added those hosts correctly! **See Lab 15, Step 10 for an example!**
 
 0. Write a new playbook that uses `looneytunes` as hosts. Have your playbook do the following:
     - Create a new directory in each machine called `challenge`. **Use the file module.**
     - Download the `downloadme.txt` file located at the following address and save it to the `~/challenge` directory you just made on each machine. **Use the get_url module.**
         - `https://raw.githubusercontent.com/csfeeser/ansible_essentials/main/data/downloadme.txt`
+    > Side note: be sure to consider the importance of the [force parameter.](https://docs.ansible.com/ansible/latest/collections/ansible/builtin/get_url_module.html#parameter-force)
 
 **BONUS-** Use the **replace module** (lab 24) to replace the string `PLACEHOLDER` in the downloadme.txt file with your own name!
 
+```yaml
+    - name: find/replace all strings
+      replace:
+        path: wherever/the/file/is/located
+        regexp: "string I am looking for"
+        replace: "string I am replacing it with"
+        backup: yes
+      become: true
+```
+
+<!--
 ## SOLUTION:
 
 ```yaml
