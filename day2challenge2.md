@@ -38,36 +38,10 @@ The following will give you a chance to write some new code that uses techniques
 ```
 
 <!--
-## SOLUTION:
+## SOLUTION
 
 ```yaml
-- name: Play- grab a file online
-  hosts: looneytunes
-  connection: ssh
-  gather_facts: no
-
-  tasks:
-  - name: create a chaCancelllenge directory
-    file:
-      name: challenge
-      state: directory
-
-  - name: downloading downloadme.txt
-    get_url:
-      url: https://raw.githubusercontent.com/csfeeser/ansible_essentials/main/data/downloadme.txt
-      dest: challenge
-
-  - name: swap out PLACEHOLDER for "Chad"
-    replace:
-      path: ~/challenge/downloadme.txt
-      regexp: "PLACEHOLDER"
-      replace: "Chad"
-      backup: yes
-```
-
-### IDEMPOTENT SOLUTION
-
-```yaml
+- name: challenge solution
   hosts: looneytunes
   connection: ssh
   gather_facts: no
@@ -83,6 +57,7 @@ The following will give you a chance to write some new code that uses techniques
       get_url:
         url: https://raw.githubusercontent.com/csfeeser/ansible_essentials/main/data/downloadme.txt
         dest: challenge/downloadme.txt
+        force: false
 
     - name: make a copy
       copy:
