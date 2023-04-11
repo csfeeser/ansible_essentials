@@ -68,7 +68,7 @@ Use vim to create a playbook file of your choosing and enter the following. Then
    - name: creating a file       # SYNTAX- needs a whitespace after the "-"
      copy:                                 # INDENTATION
        dest: challenge/challengefile.txt   # ERRORS ON THESE
-       contents: "Success!"                # THREE LINES
+       content: "Success!"                 # THREE LINES... also it is "content" NOT "contents"
  ```
 
 </details>
