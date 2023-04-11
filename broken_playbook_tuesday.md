@@ -48,25 +48,27 @@ Use vim to create a playbook file of your choosing and enter the following. Then
        state: directry
 ```
 
-<!--
-### SOLUTION
+<details>
+<summary>Click here for the solution!</summary>
+<br>
 
 ```yaml
 ---
 - name: Tuesday Challenge
-  hosts: planetexpress
-  connection: ssh 
-  gather_facts: yes 
+  hosts: planetexpress          # TYPO- planetexpress, not planet express
+  connection: ssh               # WRONG CONNECTION- ssh, not network_cli
+  gather_facts: yes
 
-  tasks:
+  tasks:                        # WRONG TASK ORDER- make dir first, then file
    - name: create a directory
      file: 
        dest: challenge
-       state: directory
+       state: directory         # TYPO- directory, not directry
+ 
+   - name: creating a file       # SYNTAX- needs a whitespace after the "-"
+     copy:                                 # INDENTATION
+       dest: challenge/challengefile.txt   # ERRORS ON THESE
+       contents: "Success!"                # THREE LINES
+ ```
 
-   - name: creating a file
-     copy:
-       dest: challenge/challengefile.txt
-       content: "Success!"
-```
--->
+</details>
