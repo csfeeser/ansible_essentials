@@ -57,6 +57,7 @@ The following will give you a chance to write some new code that uses techniques
           get_url:
             url: https://raw.githubusercontent.com/csfeeser/ansible_essentials/main/data/downloadme.txt
             dest: ~/lennon/downloadme.txt
+            force: false
          ```
 
         </details>
