@@ -20,8 +20,8 @@ The following will give you a chance to write some new code that uses techniques
 0. Use the `ping` module in an **ad hoc command** to test that you added those hosts correctly! **See Lab 15, Step 10 for an example!**
 
 0. Write a new playbook that uses `looneytunes` as hosts. Have your playbook do the following:
-    - Create a new directory in each machine called `challenge`. **Use the file module.**
-    - Download the `downloadme.txt` file located at the following address and save it to the `~/challenge` directory you just made on each machine. **Use the get_url module.**
+    - Create four new directories in each machine named `lennon`, `mccartney`, `starr`, and `harrison`. **Use the file module.** Can you accomplish this with a single task?
+    - Download the `downloadme.txt` file located at the following address and save it to the `~/lennon` directory you just made on each machine. **Use the get_url module.**
         - `https://raw.githubusercontent.com/csfeeser/ansible_essentials/main/data/downloadme.txt`
 
 **BONUS-** Use the **replace module** (lab 24) to replace the string `PLACEHOLDER` in the downloadme.txt file with your own name!
