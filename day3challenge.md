@@ -54,7 +54,7 @@ The following will give you a chance to write some new code that uses techniques
 
         ```yaml
         - name: download downloadme.txt
-          file:
+          get_url:
             url: https://raw.githubusercontent.com/csfeeser/ansible_essentials/main/data/downloadme.txt
             dest: ~/lennon/downloadme.txt
          ```
