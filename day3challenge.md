@@ -19,55 +19,73 @@ The following will give you a chance to write some new code that uses techniques
     
 0. Use the `ping` module in an **ad hoc command** to test that you added those hosts correctly! **See Lab 15, Step 10 for an example!**
 
+    <details>
+    <summary>Hint please!</summary>
+
+    `ansible looneytunes -m ping`
+
+    </details>
+
 0. Write a new playbook that uses `looneytunes` as hosts. Have your playbook do the following:
     - Create four new directories in each machine named `lennon`, `mccartney`, `starr`, and `harrison`. **Use the file module.** Can you accomplish this with a single task?
+    
+        <details>
+        <summary>Hint please!</summary>
+
+        ```yaml
+        - name: making directories!
+          file:
+            state: directory
+            path: "{{ item }}"
+          loop:
+            - lennon
+            - mccartney
+            - starr
+            - harrison
+         ```
+
+        </details>
+
     - Download the `downloadme.txt` file located at the following address and save it to the `~/lennon` directory you just made on each machine. **Use the get_url module.**
         - `https://raw.githubusercontent.com/csfeeser/ansible_essentials/main/data/downloadme.txt`
 
+        <details>
+        <summary>Hint please!</summary>
+
+        ```yaml
+        - name: download downloadme.txt
+          file:
+            url: https://raw.githubusercontent.com/csfeeser/ansible_essentials/main/data/downloadme.txt
+            dest: ~/lennon/downloadme.txt
+         ```
+
+        </details>
+        
 **BONUS-** Use the **replace module** (lab 24) to replace the string `PLACEHOLDER` in the downloadme.txt file with your own name!
 
-```yaml
-    - name: find/replace all strings
-      replace:
-        path: wherever/the/file/is/located
-        regexp: "string I am looking for"
-        replace: "string I am replacing it with"
-        backup: yes
-      become: true
-```
-
-<!--
-## SOLUTION
+**Here is a template for how the replace module is used:**
 
 ```yaml
-- name: challenge solution
-  hosts: looneytunes
-  connection: ssh
-  gather_facts: no
-
-  tasks:
-
-    - name: Create a directory if it does not exist
-      file:
-        path: challenge
-        state: directory
-
-    - name: Download file
-      get_url:
-        url: https://raw.githubusercontent.com/csfeeser/ansible_essentials/main/data/downloadme.txt
-        dest: challenge/downloadme.txt
-        force: false
-
-    - name: make a copy
-      copy:
-          src: challenge/downloadme.txt
-          dest: challenge/downloadme_edit.txt
-          force: no  # it doesn't matter if the content is changed, only if the file exists
-          remote_src: yes
-
-    - name: swap PLACEHOLDER for Chad
-      replace:
-        path: challenge/downloadme_edit.txt
-        regexp: 'PLACEHOLDER'
-        replace: 'Chad'
+- name: find/replace all strings
+  replace:
+    path: wherever/the/file/is/located
+    regexp: "string I am looking for"
+    replace: "string I am replacing it with"
+    backup: yes
+  become: true
 ```
+
+<details>
+<summary>Hint please!</summary>
+    
+```yaml
+- name: find/replace all strings
+  replace:
+    path: ~/lennon/downloadme.txt
+    regexp: "PLACEHOLDER"
+    replace: "Ansible"
+    backup: yes
+  become: true
+```
+    
+</details>
