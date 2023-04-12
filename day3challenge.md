@@ -90,3 +90,38 @@ The following will give you a chance to write some new code that uses techniques
 ```
     
 </details>
+
+### SOLUTION
+
+```yaml
+- name: day 3 solution
+  hosts: looneytunes
+  gather_facts: no
+  connection: ssh
+
+  tasks:
+
+  - name: making directories!
+    file:
+      state: directory
+      path: "{{ item }}"
+    loop:
+      - lennon
+      - mccartney
+      - starr
+      - harrison
+
+  - name: download downloadme.txt
+    get_url:
+      url: https://raw.githubusercontent.com/csfeeser/ansible_essentials/main/data/downloadme.txt
+      dest: ~/lennon/downloadme.txt
+      force: false
+
+  - name: find/replace all strings
+    replace:
+      path: lennon/downloadme.txt
+      regexp: "PLACEHOLDER"
+      replace: "Ansible"
+      backup: yes
+    become: true
+```
