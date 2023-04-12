@@ -8,9 +8,9 @@ Below you will find a familiar looking playbook. YOUR GOAL is to:
 - Convert the playbook below into a role
 - Call your newly created role from a second playbook.
 
-1. First, create your new role's directory structure.
+1. First, create your new role's directory structure
 
-    `student@bchd:~/.ansible/roles$` `ansible-galaxy init ~/.ansible/roles/challenge`
+    `student@bchd:~/.ansible/roles$` `mkdir -p ~/.ansible/roles && ansible-galaxy init ~/.ansible/roles/challenge`
     
 0. Move into your new role.
 
