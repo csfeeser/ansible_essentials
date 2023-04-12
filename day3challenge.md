@@ -17,7 +17,7 @@ The following will give you a chance to write some new code that uses techniques
     daffy       ansible_host=10.10.2.5 ansible_user=zoidberg ansible_python_interpreter=/usr/bin/python3
     ```
     
-0. Use the `ping` module in an **ad hoc command** to test that you added those hosts correctly! **See Lab 15, Step 10 for an example!**
+0. Use the `ping` module in an **ad hoc command** to test that you added those hosts correctly! **See Lab 12, Step 4 for an example!**
 
     <details>
     <summary>Hint please!</summary>
@@ -61,7 +61,7 @@ The following will give you a chance to write some new code that uses techniques
 
         </details>
         
-**BONUS-** Use the **replace module** (lab 24) to replace the string `PLACEHOLDER` in the downloadme.txt file with your own name!
+**BONUS-** Use the **replace module** (lab 25) to replace the string `PLACEHOLDER` in the downloadme.txt file with your own name!
 
 **Here is a template for how the replace module is used:**
 
