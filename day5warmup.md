@@ -97,12 +97,7 @@ Please make the following improvements to this playbook:
             name:
                - fail2ban # enables the linux host to ban IPs with suspicious SSH activity
             state: present
-
-  - name: Copy fail2ban (ssh protection)
-    copy:
-      content: "get off my dang server"
-      dest: /etc/fail2ban/jail.conf
-
+         
   - name: Restart fail2ban
     service:
       name: fail2ban
