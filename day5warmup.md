@@ -50,7 +50,7 @@ Please make the following improvements to this playbook:
 
   </details>
 
-3. The task "Restart fail2ban" is a conditional task... we only need this task to run if a change to the app `fail2ban` has occurred. Change this task to a handler that is notified by the task "Copy fail2ban (ssh protection)".
+~~3. The task "Restart fail2ban" is a conditional task... we only need this task to run if a change to the app `fail2ban` has occurred. Change this task to a handler that is notified by the task "Copy fail2ban (ssh protection)".
 
   <details>
   <summary>Help me Chadly Wan Kenobi!</summary>
@@ -98,10 +98,10 @@ Please make the following improvements to this playbook:
                - fail2ban # enables the linux host to ban IPs with suspicious SSH activity
             state: present
          
-  - name: Restart fail2ban
-    service:
-      name: fail2ban
-      state: restarted
+#  - name: Restart fail2ban
+#    service:
+#      name: fail2ban
+#      state: restarted
 
   - name: Copy fail2ban (ssh protection)
     copy:
