@@ -103,6 +103,11 @@ Please make the following improvements to this playbook:
       name: fail2ban
       state: restarted
 
+  - name: Copy fail2ban (ssh protection)
+    copy:
+       content: "Get off my dang server!"
+       dest: "/home/{{ ansible_user }}"
+       
   - name: Add a directory
     file:
       path: "/home/{{ ansible_user }}/minecraft"
