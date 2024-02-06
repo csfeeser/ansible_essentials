@@ -7,7 +7,7 @@
 Good morning! To get the blood moving today we are going to FIX a BROKEN playbook! This is what the playbook is SUPPOSED to do:
 - access localhost (our `bchd` VM)
 - create a new directory using [the file module](https://docs.ansible.com/ansible/latest/collections/ansible/builtin/file_module.html)
-- create a new file inside that directory containing the word "Success!" using [the copy module]()
+- create a new file inside that directory containing the word "Success!" using [the copy module](https://docs.ansible.com/ansible/latest/collections/ansible/builtin/copy_module.html)
 
 ### Debugging tip: run the playbook, see what error occurs. Then, focus on ONLY fixing that error. Then run again! Try not to introduce more errors as you go, focus on one thing at a time.
 
