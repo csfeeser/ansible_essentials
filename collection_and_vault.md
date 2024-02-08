@@ -44,7 +44,7 @@ Not a Pokemon fan? Here are the names of some Pokemon that will work:
         - name: Retrieve Pokémon data
           rzfeeser.pokeapi.pokeapi_info:
             resource: pokemon
-            name: "{{ pokemon_name }}"
+            name: "{{ pokemon_name | lower }}"  # | lower is a jinja2 filter; it will force our variable to lowercase
           register: pokemon_data
     
         - name: Save Pokémon data to a file
