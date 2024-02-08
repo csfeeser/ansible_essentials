@@ -5,7 +5,12 @@
 
 Gotta catch 'em all! Check out the [Pokemon API](https://pokeapi.co/) which returns tons of JSON data on your favorite Pokemon characters!
 
-For once, our warmup is NOT broken! The files below are totally syntax-error free, but still, they won't work! Diagnose what is needed to get the playbook running. You MUST use Ansible-Vault to encrypt the name of your Pokemon and you MUST continue using the collection in the playbook! 
+### GOALS:
+
+- For once, our warmup is NOT broken! The files below are totally syntax-error free, but still, they won't work!
+- Diagnose what is needed to get the playbook running.
+- You MUST use Ansible-Vault to encrypt the name of your Pokemon
+- You MUST continue using the collection in the playbook! 
 
 Not a Pokemon fan? Here are the names of some Pokemon that will work:
 - `Pikachu`
@@ -44,7 +49,7 @@ Not a Pokemon fan? Here are the names of some Pokemon that will work:
         - rzfeeser.pokeapi
     
       tasks:
-        - name: Retrieve Pokémon data
+        - name: Using the name of a Pokémon, collect API data
           rzfeeser.pokeapi.pokeapi_info:
             resource: pokemon
             name: "{{ pokemon_name | lower }}"  # | lower is a jinja2 filter; it will force our variable to lowercase
