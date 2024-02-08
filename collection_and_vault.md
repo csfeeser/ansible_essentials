@@ -1,5 +1,8 @@
 # Morning Warmup!
 
+<img src="https://i.pinimg.com/736x/4a/4c/df/4a4cdffb8d189b1284636ae4c9e7ae7b.jpg" width="300"/>
+
+
 Gotta catch 'em all! Check out the [Pokemon API](https://pokeapi.co/) which returns tons of JSON data on your favorite Pokemon characters!
 
 For once, our warmup is NOT broken! The files below are totally syntax-error free, but still, they won't work! Diagnose what is needed to get the playbook running. You MUST use Ansible-Vault to encrypt the name of your Pokemon and you MUST continue using the collection in the playbook! 
