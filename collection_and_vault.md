@@ -52,3 +52,20 @@ Not a Pokemon fan? Here are the names of some Pokemon that will work:
             content: "{{ pokemon_data.pokeapi_json }}"
             dest: "/home/student/static/{{ pokemon_name }}_data.json"
     ```
+
+<details>
+<summary><b>SOLUTION</b></summary>
+
+We need to install the collection used in this playbook!
+
+`ansible-galaxy collection install rzfeeser.pokeapi`
+
+We need to fix the file contained our Vault-encrypted Pokemon name.
+
+`ansible-vault encrypt_string 'pikachu' --name 'pokemon_name' > ~/mycode/pokemon_name.yml`
+
+Last but not least, when running the playbook you need to add the `--ask-vault-pass` option, otherwise you can't access your Vault secret.
+
+`ansible-playbook gotta-catchem-all.yml --ask-vault-pass`
+
+</details>
