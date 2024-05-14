@@ -1,7 +1,35 @@
+#### Executing an Ansible playbook
 #### AD-HOC Ansible Command (aka Ansible without a Playbook)
 ```
-ansible planetexpress -m command -a "whoami" -i ~/mycode/inv/dev/hosts"
-        ^ HOST(S)      ^          ^           ^
+ansible-playbook setup.yaml -i ~/mycode/inv/dev/hosts -e "var1=value1"
+                  ^ playbook   ^                      ^ passing in variable at command line
+                               |
+                               inventory file location
+                                  parameter
+```
+
+#### Ansible Doc (look stuff up)
+```
+ansible-doc -t module <module_name>
+    ^       ^         ^ module name to get documentation for
+    |       |         
+    |       type of documentation (module in this case)
+    command
+```
+
+#### Ansible Inventory (check inventory hosts)
+```
+ansible-inventory -i ~/mycode/inv/dev/hosts --list
+     ^            ^                          ^ displays inventory in JSON format
+     |            |                          
+     |            inventory file location    
+     command
+```
+
+#### AD-HOC Ansible Command (aka Ansible without a Playbook)
+```
+ansible planetexpress -m command -a "whoami" -i ~/mycode/inv/dev/hosts" -b
+        ^ HOST(S)      ^          ^           ^                          ^ "become" (run as root)
                        module     |           |
                                   argument/   inventory file location
                                   parameter
