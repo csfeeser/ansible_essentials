@@ -2,13 +2,13 @@
 
 ### Lab Objective
 
-  - To build Jinja templates and gain and understanding of how templating can be leveraged with NetBox.  
+  - To build Jinja templates and gain and understanding of how templating can be leveraged.  
 
 ### Procedure
 
-1. Jinja2 is a templating engine that helps transform raw data into dynamic content. Its core features include variables `{{ variable }}` for data insertion, control structures such as loops `{% for item in list %}` and conditional statements `{% if condition %}`, alongside filters `{{ name | capitalize }}` for data formatting. This functionality is key in customizing text outputs, making it a valuable tool for tasks involving NetBox.
+1. Jinja2 is a templating engine that helps transform raw data into dynamic content. Its core features include variables `{{ variable }}` for data insertion, control structures such as loops `{% for item in list %}` and conditional statements `{% if condition %}`, alongside filters `{{ name | capitalize }}` for data formatting. This functionality is key in customizing text outputs, making it a valuable tool for tasks.
   
-0. To save us from hopping around inside of Netbox and making a lot of changes we'll have to undo later, head to this free [Jinja2 templating site](https://j2live.ttl255.com/). This site is designed to help you test a Jinja Template, and is perfect for learning how they work. Copy the information below into the 'Jinja2 Template' and 'Jinja2 Data' fields respectively:
+0. Head to this free [Jinja2 templating site](https://j2live.ttl255.com/). This site is designed to help you test a Jinja Template, and is perfect for learning how they work. Copy the information below into the 'Jinja2 Template' and 'Jinja2 Data' fields respectively:
 
     **Jinja2 Template**
     ```
