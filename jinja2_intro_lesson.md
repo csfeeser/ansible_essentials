@@ -20,15 +20,13 @@
     PREFERRED FOOD: {{ petfavfood }}
     ```
 
-     **Jinja2 Data**
-     ```
-     {
-       "name": "<YOUR NAME HERE>",
-       "petname": "Spot",
-       "petspecies": "dog",
-       "petfavfood": "kibble"
-     }
-     ```
+    **Jinja2 Data**
+    ```
+    name: "<YOUR NAME HERE>"
+    petname: Spot
+    petspecies: dog
+    petfavfood: kibble
+    ```
 
     Click the `Render Template` button.
 
@@ -61,26 +59,17 @@
 
     **Jinja2 Data** box:
     ```
-    {
-      "name": "Chad",
-      "pets": [
-        {
-          "petname": "Spot",
-          "petspecies": "dog",
-          "petfavfood": "kibble"
-        },
-        {
-          "petname": "Socks",
-          "petspecies": "cat",
-          "petfavfood": "tuna"
-        },
-        {
-          "petname": "Berzerker",
-          "petspecies": "hamster",
-          "petfavfood": "fingers"
-        }
-      ]
-    }
+    name: Chad
+    pets:
+    - petname: Spot
+      petspecies: dog
+      petfavfood: kibble
+    - petname: Socks
+      petspecies: cat
+      petfavfood: tuna
+    - petname: Berzerker
+      petspecies: hamster
+      petfavfood: fingers
     ```
 
     Click the `Render Template` button.
