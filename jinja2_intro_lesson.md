@@ -32,13 +32,15 @@
 
     <details><Summary>Rendered Template</Summary>
 
-    Welcome to Frank's Pet Store!
+    ```
+    Welcome to Chad's Pet Store!
     We have the following animals for adoption:
   
     NAME: Spot
     SPECIES: dog
     PREFERRED FOOD: kibble
-
+    ```
+    
     </details>
 
 0. You'll see the that the JSON key's values replaced the template's variable named between the double curly braces. You'll see our rendered template on the right. Note if even a single character is wrong it can throw off the final result.
@@ -75,7 +77,8 @@
     Click the `Render Template` button.
 
     <details><Summary>Rendered Template</Summary>
-    
+
+    ```
     Welcome to Chad's Pet Store!
     We have the following animals for adoption:
     
@@ -91,7 +94,8 @@
     NAME: Berzerker
     SPECIES: hamster
     PREFERRED FOOD: fingers
-
+    ```
+    
     </details>
 
 0. Next, we'll introduce an additional layer of complexity by integrating an 'if' condition within the 'for' loop, effectively filtering the displayed data based on specific criteria:
