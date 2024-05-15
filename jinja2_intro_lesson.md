@@ -20,7 +20,7 @@
     PREFERRED FOOD: {{ petfavfood }}
     ```
 
-    **Jinja2 Data**
+    **Jinja2 Data (YAML)**
     ```
     name: "<YOUR NAME HERE>"
     petname: Spot
