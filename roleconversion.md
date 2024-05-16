@@ -8,11 +8,15 @@ Below you will find a familiar looking playbook. YOUR GOAL is to:
 - Convert the playbook below into a role
 - Call your newly created role from a second playbook.
 
-1. First, create a directory for your role to be stored in.
+1. Let's first restart our nodes and Ansible files.
+
+    `student@bchd:~$` `bash ~/px/scripts/full-setup.sh`
+
+0. Create a directory for your role to be stored in.
 
     `student@bchd:~$` `mkdir -p ~/galaxy/roles/`
     
-0. First, create your new role's directory structure.
+0. Create your new role's directory structure.
 
     `student@bchd:~$` `ansible-galaxy init ~/galaxy/roles/challenge`
     
@@ -110,4 +114,3 @@ Below you will find a familiar looking playbook. YOUR GOAL is to:
       name: apache2
       state: restarted
 ```
-
