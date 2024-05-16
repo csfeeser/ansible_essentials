@@ -42,7 +42,7 @@ Below you will find a familiar looking playbook. YOUR GOAL is to:
 
 0. Here's a hint: you will need to edit `vars/main.yml`, `tasks/main.yml`, and `handlers/main.yml`. All other directories in your role can be removed if you wish. Happy cut/pasting!
 
-0. When you feel you've successfully created the role, try and run it! Click the dropdown if you need an example of how this is done.
+0. When you feel you've successfully created the role, try and run it on `zoidberg`! Click the dropdown if you need an example of how this is done.
 
 <details>
 <summary>Playbook calling a Role</summary>
