@@ -10,7 +10,11 @@ Good morning! Today's challenge will involve the following concepts from yesterd
 
 **Below is playbook that automates installing a Minecraft server on an Ubuntu host! Minecraft is an internationally popular video game that allows players of all ages to get together online and build whatever they want! But installing/maintaining a Minecraft server can be a pain... Ansible to the rescue!**
 
-Please make the following improvements to this playbook:
+Start with a quick reset of planetexpress.
+
+`student@bchd:~$` `bash ~/px/scripts/full-setup.sh`
+
+#### Please make the following improvements to this playbook:
 
 1. Add a `rescue` to the "Install apps for minecraft server" block. Have one of the rescue tasks uninstall the applications. Then have a second rescue task throw an intentional error announcing that the apps have been uninstalled.
 
