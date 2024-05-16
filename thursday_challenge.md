@@ -42,11 +42,9 @@ Start with a quick reset of planetexpress.
             update_cache: yes
 
         - name: Install apps for minecraft server
-          block:
-            - name: Install additional apps via apt
-              apt:
-                name: fail2ban
-                state: present
+          apt:
+            name: fail2ban
+            state: present
 
   - name: Setup fail2ban (ssh protection)
     become: yes
