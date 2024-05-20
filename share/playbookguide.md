@@ -47,7 +47,8 @@ ansible planetexpress -m command -a "whoami" -i ~/mycode/inv/dev/hosts" -b
   - name: task1          #GOAL OF THE TASK
     apt:                 #NAME OF THE MODULE
       update_cache: true #PARAMETER OF THIS MODULE
-    become: yes          #SHOULD THIS TASK BE EXECUTED WITH "ROOT" PRIVILEGE?
+    become: yes          #This a keyword, NOT a parameter of the module.
+                         #MEANS: SHOULD THIS TASK BE EXECUTED WITH "ROOT" PRIVILEGE?
 ```
 
 <!--
