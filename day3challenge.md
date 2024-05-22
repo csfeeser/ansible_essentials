@@ -60,7 +60,9 @@ The following will give you a chance to write some new code that uses techniques
         ```
     
         </details>
-        
+
+0. **BONUS**- after you get everything working the way that the challenge describes above, think critically- is this playbook with these modules IDEMPOTENT? Why or why not?
+
 <details>
 <summary>FULL SOLUTION</summary>
 
