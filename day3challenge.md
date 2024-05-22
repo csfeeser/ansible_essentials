@@ -8,29 +8,11 @@ The following will give you a chance to write some new code that uses techniques
 
     `student@bchd:~$` `bash ~/px/scripts/full-setup.sh`
 
-0. Edit your inventory file (`~/mycode/inv/dev/hosts`). **Append** the following to it (do not remove anything from your inventory file):
-
-    ```
-    [looneytunes]
-    bugs        ansible_host=10.10.2.3 ansible_user=bender ansible_python_interpreter=/usr/bin/python3
-    taz         ansible_host=10.10.2.4 ansible_user=fry ansible_python_interpreter=/usr/bin/python3
-    daffy       ansible_host=10.10.2.5 ansible_user=zoidberg ansible_python_interpreter=/usr/bin/python3
-    ```
-    
-0. Use the `ping` module in an **ad hoc command** to test that you added those hosts correctly! **See Lab 12, Step 4 for an example!**
-
-    <details>
-    <summary>Hint please!</summary>
-
-    `ansible looneytunes -m ping`
-
-    </details>
-
-0. Write a new playbook that uses `looneytunes` as hosts. Have your playbook do the following:
+0. Write a new playbook that uses `planetexpress` as hosts. Have your playbook do the following:
     - Create four new directories in each machine named `lennon`, `mccartney`, `starr`, and `harrison`. **Use the file module.** Can you accomplish this with a single task?
     
         <details>
-        <summary>Hint please!</summary>
+        <summary>Help please!</summary>
 
         ```yaml
         - name: making directories!
@@ -50,7 +32,7 @@ The following will give you a chance to write some new code that uses techniques
         - `https://raw.githubusercontent.com/csfeeser/ansible_essentials/main/data/downloadme.txt`
 
         <details>
-        <summary>Hint please!</summary>
+        <summary>Help please!</summary>
 
         ```yaml
         - name: download downloadme.txt
@@ -62,40 +44,29 @@ The following will give you a chance to write some new code that uses techniques
 
         </details>
         
-**BONUS-** Use the **replace module** (lab 25) to replace the string `PLACEHOLDER` in the downloadme.txt file with your own name!
+    - Use the **replace module** (lab 26) to replace the string `PLACEHOLDER` in the downloadme.txt file with your own name!
 
-**Here is a template for how the replace module is used:**
+        <details>
+        <summary>Help please!</summary>
 
-```yaml
-- name: find/replace all strings
-  replace:
-    path: wherever/the/file/is/located
-    regexp: "string I am looking for"
-    replace: "string I am replacing it with"
-    backup: yes
-  become: true
-```
-
+        ```yaml
+        - name: find/replace all strings
+          replace:
+            path: ~/lennon/downloadme.txt
+            regexp: "PLACEHOLDER"
+            replace: "StudentName"
+            backup: yes
+          become: true
+        ```
+    
+        </details>
+        
 <details>
-<summary>Hint please!</summary>
-    
-```yaml
-- name: find/replace all strings
-  replace:
-    path: ~/lennon/downloadme.txt
-    regexp: "PLACEHOLDER"
-    replace: "Ansible"
-    backup: yes
-  become: true
-```
-    
-</details>
-
-### SOLUTION
+<summary>FULL SOLUTION</summary>
 
 ```yaml
 - name: day 3 solution
-  hosts: looneytunes
+  hosts: planetexpress
   gather_facts: no
   connection: ssh
 
@@ -121,7 +92,9 @@ The following will give you a chance to write some new code that uses techniques
     replace:
       path: lennon/downloadme.txt
       regexp: "PLACEHOLDER"
-      replace: "Ansible"
+      replace: "StudentName"
       backup: yes
     become: true
 ```
+
+</details>
