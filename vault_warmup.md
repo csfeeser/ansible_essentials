@@ -6,6 +6,12 @@ Good morning! To get the blood moving today we are going to improve an already e
 - Access the host `farnsworth` using SSH with password authentication
 - Create directories for a list of popular cartoon characters
 
+Let's start by removing the SSH password from farnsworth's inventory. Run the following command.
+
+`student@bchd:~/mycode$` `wget -O ~/mycode/inv/dev/hosts https://raw.githubusercontent.com/csfeeser/ansible_essentials/main/data/hosts`
+
+> The playbook should now properly fail IF the password `alta3` isn't provided!
+
 Use vim to create a playbook file of your choosing and enter the following.
 
 `student@bchd:~/mycode$` `vim ~/mycode/cartoon_characters.yml`
@@ -65,11 +71,11 @@ Use vim to create a playbook file of your choosing and enter the following.
 
 ### Playbook with Ansible Vault Integration
 
-To secure the `ansible_ssh_pass` using Ansible Vault, follow these steps:
+**NOTE:** the following is just *one way* to secure the `ansible_ssh_pass` using Ansible Vault. You may have done it differently and that's ok!
 
 1. **Encrypt the SSH Password:**
    ```sh
-   ansible-vault encrypt_string 'alta3' --name 'ansible_ssh_pass' > ~/mycode/vault.yml
+   ansible-vault --vault-id warmup@prompt encrypt_string 'alta3' --name 'ansible_ssh_pass' > ~/mycode/vault.yml
    ```
 
    - Choose whatever password you like to encrypt it.
@@ -115,7 +121,7 @@ To secure the `ansible_ssh_pass` using Ansible Vault, follow these steps:
 
 4. **Run the Playbook with the Vault File:**
    ```sh
-   ansible-playbook ~/mycode/cartoon_characters.yml --ask-vault-pass
+   ansible-playbook ~/mycode/cartoon_characters.yml --vault-id warmup@prompt
    ```
 
 </details>
