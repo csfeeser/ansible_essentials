@@ -65,6 +65,12 @@ Use vim to create a playbook file of your choosing and enter the following.
 
 - Reduce this playbook from five tasks to one by using a loop!
 
+### WHEN FINISHED WITH THE WARMUP:
+
+Reset your inventory and farnsworth with our bash reset command.
+
+`student@bchd:~$` `bash ~/px/scripts/full-setup.sh`
+
 <details>
 <summary>Click here for the solution!</summary>
 <br>
@@ -75,7 +81,7 @@ Use vim to create a playbook file of your choosing and enter the following.
 
 1. **Encrypt the SSH Password:**
    ```sh
-   ansible-vault --vault-id warmup@prompt encrypt_string 'alta3' --name 'ansible_ssh_pass' > ~/mycode/vault.yml
+   ansible-vault encrypt_string 'alta3' --name 'ansible_ssh_pass' --vault-id warmup@prompt > ~/mycode/vault.yml
    ```
 
    - Choose whatever password you like to encrypt it.
