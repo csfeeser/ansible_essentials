@@ -68,6 +68,7 @@ Create the playbook as written below, then get to applying the goals above!
 
 <details>
 <summary>Click here to see the solution!</summary>
+    
 ```yaml
 ---
 - name: Thursday morning challenge
