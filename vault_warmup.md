@@ -6,15 +6,27 @@ Good morning! To get the blood moving today we are going to improve an already e
 - Access the host `farnsworth` using SSH with password authentication
 - Create directories for a list of popular cartoon characters
 
-Let's start by removing the SSH password from farnsworth's inventory. Run the following command.
+**STEP ONE.** Reset your inventory and planetexpress hosts with our bash reset command.
+
+`student@bchd:~$` `bash ~/px/scripts/full-setup.sh`
+
+**STEP TWO.** Remove the SSH password from farnsworth's inventory. Run the following command.
 
 `student@bchd:~/mycode$` `wget -O ~/mycode/inv/dev/hosts https://raw.githubusercontent.com/csfeeser/ansible_essentials/main/data/hosts`
 
-> The playbook should now properly fail IF the password `alta3` isn't provided!
+**STEP THREE.** Confirm that farnsworth is no longer accessible with the following command.
 
-Use vim to create a playbook file of your choosing and enter the following.
+`student@bchd:~$` `ansible farnsworth -m ping`
 
-`student@bchd:~/mycode$` `vim ~/mycode/cartoon_characters.yml`
+```
+farnsworth | UNREACHABLE! => {
+    "changed": false,
+    "msg": "Failed to connect to the host via ssh: Warning: Permanently added '10.10.2.6' (RSA) to the list of known hosts.\r\nfarnsworth@10.10.2.6: Permission denied (publickey,gssapi-keyex,gssapi-with-mic,password).",
+    "unreachable": true
+}
+```
+
+**STEP FOUR.** Paste the following playbook into vim.
 
 ```yaml
 ---
@@ -57,19 +69,14 @@ Use vim to create a playbook file of your choosing and enter the following.
 
 ### Objective 1:
 
-- Use `Lab 58. 💻 Ansible Vault` to help you with this one.
-- Instead of having the password `alta3` as plain text in the playbook, **encrypt it** with Ansible Vault!
+- Use `Lab 39. 💻 Complete Ansible Vault` to help you with this one.
+- Instead of having the variable `ansible_ssh_pass` defining the password `alta3` as plain text in the playbook, **encrypt it** with Ansible Vault!
+     > The variable *must* be `ansible_ssh_pass`, no variations.
 - Where you put the encrypted password is up to you! (`vars`, `vars_files`)
 
 ### Objective 2 (Optional):
 
 - Reduce this playbook from five tasks to one by using a loop!
-
-### WHEN FINISHED WITH THE WARMUP:
-
-Reset your inventory and farnsworth with our bash reset command.
-
-`student@bchd:~$` `bash ~/px/scripts/full-setup.sh`
 
 <details>
 <summary>Click here for the solution!</summary>
@@ -123,11 +130,6 @@ Reset your inventory and farnsworth with our bash reset command.
          loop: "{{ cartoon_characters }}"  # NEW
 
      # delete the rest!
-   ```
-
-4. **Run the Playbook with the Vault File:**
-   ```sh
-   ansible-playbook ~/mycode/cartoon_characters.yml --vault-id warmup@prompt
    ```
 
 </details>
