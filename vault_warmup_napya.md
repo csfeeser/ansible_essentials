@@ -1,4 +1,4 @@
-# Ansible-Vault Directory Challenge!
+# Ansible-Vault API Challenge!
 
 <img src="https://github.com/csfeeser/ansible_essentials/assets/31425191/e6b48f66-7093-4e24-bd09-f7c0c0e61dd5" width="300"/>
 
