@@ -1,5 +1,7 @@
 ## Challenge: Secure Your Playbook with Ansible Vault
 
+![excalibur-vault-door-1](https://github.com/user-attachments/assets/6ddcad70-ad27-4ddc-bd02-98eba344b5ee)
+
 ### Task:
 Take the provided playbook below and modify it so that the `idrac_password` is securely stored and passed using Ansible Vault.
 
