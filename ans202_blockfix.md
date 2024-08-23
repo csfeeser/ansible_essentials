@@ -1,4 +1,4 @@
-### Challenge Lab: Fixing and Enhancing a Playbook
+# BUSTED RESCUE PLAYBOOK!
 
 **Objective:**  
 Behold our last busted playbook to fix! You should recognize this playbook from the labs, but alas, it is riddled with very common errors... some obvious, some not. Your objective is to do the following:
