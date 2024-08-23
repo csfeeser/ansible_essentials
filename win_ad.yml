@@ -1,0 +1,46 @@
+---
+- name: Install and configure Active Directory on Windows Server
+  hosts: windows_servers
+  tasks:
+
+  - name: Install the AD DS role
+    win_feature:
+      name: AD-Domain-Services
+      state: present
+    become: yes
+
+  - name: Install the DNS role (optional but recommended)
+    win_feature:
+      name: DNS
+      state: present
+    become: yes
+    
+  - name: Promote this server to a Domain Controller
+    win_domain_controller:
+      dns_domain_name: example.com  # Replace with your domain name
+      domain_admin_user: Administrator  # Domain Admin username
+      domain_admin_password: "{{ domain_admin_password }}"  # Password for the Domain Admin
+      safe_mode_password: "{{ safe_mode_password }}"  # DSRM password (Directory Services Restore Mode)
+      state: present
+    become: yes
+    vars:
+      domain_admin_password: "YourDomainAdminPassword"  # Set your actual password
+      safe_mode_password: "YourSafeModePassword"  # Set your actual DSRM password
+
+  - name: Ensure the domain is reachable
+    win_ping:
+    register: ping_result
+
+  - name: Check if the server is a domain controller
+    win_domain:
+      state: domain_controller
+      dns_domain_name: example.com
+    register: domain_status
+    
+  - name: Output the result
+    debug:
+      msg: "Domain setup completed successfully!" if domain_status.state == "domain_controller" else "Domain setup failed."
+      
+      
+      
+      
