@@ -22,10 +22,31 @@
 
 `student@bchd~$` `ansible-playbook whenpractice.yml`
 
-#### Solution (click to reveal)
+### 3 Hints and a Solution
 
 <details>
-  <summary>Solution</summary>
+<summary>Gimme a hint!</summary>
+<br>
+
+- Hint 1: Your name is being compared to the current `item` in the loop.
+
+<details>
+<summary>Need another hint?</summary>
+<br>
+
+- Hint 2: You'll need to confirm that your name and the current `item` are the same.
+
+<details>
+<summary>Want another hint?</summary>
+<br>
+
+- Hint 3: Use `==` to compare your name to the current `item`.
+
+<details>
+<summary>Want the answer?</summary>
+<br>
+
+- Hint 4: Use the `when` condition like this:
 
 ```yaml
     - name: Print that only YOUR name is awesome
@@ -35,5 +56,6 @@
       when: item == "YourName"
 ```
 
-Replace `"YourName"` with your actual name.
-</details>
+Replace "YourName" with your actual name.
+
+</details> </details> </details> </details>
