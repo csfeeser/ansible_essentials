@@ -130,6 +130,27 @@ Execute your playbook like so:
 </details>
 </details>
 
+<details>
+<summary>Error: 'astrojson' is undefined when displayed</summary>
+<br>
+
+- Hint 1: Make sure you're registering the output from the "uri" task.
+
+<details>
+<summary>Need another hint?</summary>
+<br>
+
+- Hint 2: Check if the "uri" task is run before the debug task. It might be out of order.
+
+<details>
+<summary>Want the answer?</summary>
+<br>
+
+- Hint 3: The tasks are in the wrong order! The "uri" task should come first to get the data, then the debug task to display it.
+
+</details>
+</details>
+</details>
 
 ### Full Solution!
 
