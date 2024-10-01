@@ -24,15 +24,6 @@
   <summary>Solution</summary>
 
 ```yaml
-- name: Warmup Activity: Only Print Your Name as Awesome!
-  hosts: localhost
-  vars:
-    names_list:
-      - Chad
-      - Damian
-      - Jason
-
-  tasks:
     - name: Print that only YOUR name is awesome
       debug:
         msg: "{{ item }} is awesome!"
