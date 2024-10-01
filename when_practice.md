@@ -1,5 +1,7 @@
 ## More Practice with WHEN and LOOPS!
 
+`student@bchd~$` `vim whenpractice.yml`
+
 ```yaml
 ---
 - name: When and Loops
@@ -17,6 +19,8 @@
       loop: "{{ names_list }}"
       # CHALLENGE: Add a `when` condition here that this task only prints out YOUR name as awesome :)
 ```
+
+`student@bchd~$` `ansible-playbook whenpractice.yml`
 
 #### Solution (click to reveal)
 
