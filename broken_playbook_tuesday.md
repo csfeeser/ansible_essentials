@@ -2,8 +2,6 @@
 
 <img src="https://i.redd.it/i4v9op0chrc51.jpg" width="500"/>
 
-
-
 Good morning! To get the blood moving today we'll start with a familiar looking playbook-- however, it's broken! Your job is to get it working (no need to improve it).
 
 Please start by getting your environment prepared:
@@ -31,21 +29,19 @@ Use vim to create a playbook file of your choosing and enter the following. Then
 
 ```yaml
 ---
-- name: Tuesday Challenge
+- name: Tuesday challenge
   hosts: planet express
-  connection: network_cli
-  gather_facts: yes
+  connection: winrm
+  become: true
 
   tasks:
-   -name: creating a file
-     copy:
-        dest: challenge/challengefile.txt
-       contents: "Success!"
-       
-   - name: create a directory
-     file: 
-       dest: challenge
-       state: directry
+    -name: Write "Happy Tuesday!" into a file
+      shell: echo "Happy Tuesday!" > day2/message.txt
+
+    - name: Create the day2 directory
+      file:
+         path: day2
+        state: directry
 ```
 
 <details>
@@ -54,21 +50,19 @@ Use vim to create a playbook file of your choosing and enter the following. Then
 
 ```yaml
 ---
-- name: Tuesday Challenge
-  hosts: planetexpress          # TYPO- planetexpress, not planet express
-  connection: ssh               # WRONG CONNECTION- ssh, not network_cli
-  gather_facts: yes
+- name: Tuesday challenge
+  hosts: planetexpress    # FIX: hosts must match inventory name exactly (planetexpress, not "planet express")
+  become: true
+  connection: ssh         # FIX: connection should be ssh (winrm is for Windows targets)
+  tasks:
+    
+    # FIX: wrong task order! The directory must exist BEFORE you write to a file inside it    - name: Create the day2 directory
+      file:
+        path: day2        # FIX: incorrect indentation 
+        state: directory  # FIX: "directry" typo corrected to "directory"
 
-  tasks:                        # WRONG TASK ORDER- make dir first, then file
-   - name: create a directory
-     file: 
-       dest: challenge
-       state: directory         # TYPO- directory, not directry
- 
-   - name: creating a file       # SYNTAX- needs a whitespace after the "-"
-     copy:                                 # INDENTATION
-       dest: challenge/challengefile.txt   # ERRORS ON THESE
-       content: "Success!"                 # THREE LINES... also it is "content" NOT "contents"
+    - name: Write "Happy Tuesday!" into a file  # FIX: missing a space after "- name"
+      shell: echo "Happy Tuesday!" > day2/message.txt
  ```
 
 </details>
