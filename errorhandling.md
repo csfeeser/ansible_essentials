@@ -1,4 +1,4 @@
-# Friday Morning Challenge
+# Error Handling Warmup
 
 <img src="https://geekflare.com/wp-content/uploads/2021/10/minecraft-hosting-vultr.png" width="500"/>
 
