@@ -1,7 +1,7 @@
 # Playbook to Role Conversion
 
 
-<img src="https://github.com/csfeeser/ansible_essentials/blob/main/data/ansiblebaby.jpg?raw=true" width="300"/>
+<img src="https://raw.githubusercontent.com/csfeeser/ansible_essentials/refs/heads/main/ansiblememe.png" width="400"/>
 
 
 Below you will find a familiar looking playbook. YOUR GOAL is to:
