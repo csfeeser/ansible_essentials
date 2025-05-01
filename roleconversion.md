@@ -114,3 +114,84 @@ Below you will find a familiar looking playbook. YOUR GOAL is to:
       name: apache2
       state: restarted
 ```
+
+<details>
+<summary>SOLUTION</summary>
+
+First, make sure you've run all the steps at the beginning of the lab to initiate a role directory. Then you can run the following commands:
+
+---
+
+`vim ~/galaxy/roles/challenge/vars/main.yml`
+
+```yaml
+---
+pkgs:
+  - apache2
+  - mariadb-server
+  - mariadb-client
+```
+---
+
+`vim ~/galaxy/roles/challenge/tasks/main.yml`
+
+```yaml
+---
+- name: latest Apache version installed
+  package:
+    name: "{{ pkgs }}"
+    state: latest
+  notify:
+    - restart_apache
+
+- name: Apache enabled and running
+  service:
+    name: apache2
+    enabled: yes
+    state: started
+
+- name: copy index.html
+  copy:
+    src: index.html
+    dest: /var/www/html/
+
+- name: Download a copy of apache2.conf
+  get_url:
+    url: https://raw.githubusercontent.com/rzfeeser/alta3files/master/apache2.conf
+    dest: /etc/apache2/
+  notify:
+    - restart_apache
+```
+
+---
+
+`vim ~/galaxy/roles/challenge/handlers/main.yml`
+
+```yaml
+---
+- name: restart_apache
+  service:
+    name: apache2
+    state: restarted
+```
+
+---
+
+Then make a playbook calling the role and execute it.
+
+`vim ~/mycode/role_challenge.yml`
+
+```yaml
+---
+- name: executing a role
+  hosts: zoidberg
+  gather_facts: yes
+  become: true
+
+  roles:
+    - challenge
+```
+
+`ansible-playbook ~/mycode/role_challenge.yml`
+
+</details>
