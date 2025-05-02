@@ -23,8 +23,34 @@
       |  |--Redfish
     ```
 
-    > Don't see that output? Your inventory file may have been configured incorrectly/removed. Let Chad know!
+0. If you don't see that output, it means that your inventory was reset at some point by our bash script. No worries! Open the dropdown below and PASTE the entire bash block at your command line. Super easy.
 
+<details>
+<summary>CLICK HERE FOR REDFISH INVENTORY FIX</summary>
+    
+```bash
+#!/bin/bash
+
+# Set BASEURL using FQDN discovery
+export BASEURL="aux1-$(hostname -d).live.alta3.com"
+
+# Define the file to check/update
+HOSTS_FILE=~/mycode/inv/dev/hosts
+
+# Create the file if it doesn't exist
+mkdir -p ~/mycode/inv/dev
+touch "$HOSTS_FILE"
+
+# Check and append if needed
+if ! grep -q "\[redfish\]" "$HOSTS_FILE" || ! grep -q "baseuri=$BASEURL" "$HOSTS_FILE"; then
+  echo -e "\n[redfish]\nRedfish     baseuri=$BASEURL username=root password=null" >> "$HOSTS_FILE"
+  echo "Redfish inventory block added."
+else
+  echo "Redfish inventory block already present."
+fi
+```
+
+</details>
 
 ## Procedure
 
