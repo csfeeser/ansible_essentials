@@ -1,4 +1,6 @@
-# Wednesday Warmup
+# Redfish Warmup
+
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRI1DLRSo38oL8Nm5Fxo64zhew0aXBLsyFuOQ&s" width="300"/>
 
 ## Prep
     
