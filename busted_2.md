@@ -1,39 +1,24 @@
 
-# Broken Playbook Challenge: Minecraft Mayhem!
+# Thursday Morning Challenge: Minecraft Mayhem!
 
 <img src="https://geekflare.com/wp-content/uploads/2021/10/minecraft-hosting-vultr.png" width="500"/>
 
-This troubleshooting challenge will involve the following concepts:
+Good morning! Today's troubleshooting challenge will involve the following concepts from yesterday:
 
 - Error handling
-- Blocks and rescue
 - Handlers
 - Tags
+- Variable precedence
 
-Below is a playbook that prepares an Ubuntu host to run a Minecraft server! Unfortunately, the administrator who wrote this playbook made several mistakes. Some will cause the playbook to fail outright, while others will cause it to behave differently than intended.
-
-Your job is to troubleshoot the playbook, not add new features!
+Below is a playbook that prepares an Ubuntu host to run a Minecraft server! Unfortunately, there are a handful of errors preventing it from working correctly. Your job is to find and fix them!
 
 Start with a quick reset of planetexpress.
 
 `student@bchd:~$` `bash ~/px/scripts/full-setup.sh`
 
-#### GOAL: The playbook should accomplish the following:
+Use vim to create the following playbook.
 
-1. Install Java and Fail2ban on zoidberg.
-2. If the application installation fails, uninstall both applications and intentionally fail the playbook with a message explaining what happened.
-3. Configure Fail2ban to protect SSH connections.
-4. Restart Fail2ban ONLY when its configuration changes.
-5. Create a Minecraft directory in the remote user's home directory.
-6. Download the Minecraft server JAR file into that directory.
-7. Allow administrators to selectively run portions of the playbook using the following tags:
-   - `install` - Install applications.
-   - `security` - Configure Fail2ban.
-   - `minecraft` - Create the directory and download the server.
-
-Use vim to create a playbook file of your choosing and enter the following. Then test, fix, repeat!
-
-### Debugging tip: Not every error will generate a red error message! A playbook that executes successfully isn't necessarily a playbook that does what it is supposed to do. Refer to the goals above to make sure the playbook behaves as intended.
+`student@bchd:~$` `vim ~/mycode/minecraft.yml`
 
 ```yaml
 ---
@@ -45,6 +30,10 @@ Use vim to create a playbook file of your choosing and enter the following. Then
 
   vars:
     mc_server_link: https://piston-data.mojang.com/v1/objects/c9df48efed58511cdd0213c56b9013a7b5c9ac1f/server.jar
+
+    mc_packages:
+      - default-jre-headless
+      - fail2ban
 
   tasks:
 
@@ -58,27 +47,24 @@ Use vim to create a playbook file of your choosing and enter the following. Then
 
         - name: Install apps for Minecraft server
           apt:
-            name:
-              - default-jre-headless
-              - fail2ban
+            name: "{{ minecraft_packages }}"
             state: present
-          ignore_errors: yes
 
       rescue:
 
         - name: Uninstall applications
           apt:
-            name:
+            packages_to_remove:
               - default-jre-headless
               - fail2ban
-            state: present
+            state: absent
 
         - name: Announce installation failure
-          debug:
-            msg: "Installation failed! Applications have been uninstalled."
+          fail:
+            message: "Installation failed! Applications have been uninstalled."
 
     - name: Setup fail2ban (SSH protection)
-      tags: minecraft
+      tags: security
       block:
 
         - name: Configure fail2ban
@@ -98,7 +84,7 @@ Use vim to create a playbook file of your choosing and enter the following. Then
             enabled: yes
 
     - name: Download Minecraft server JAR file
-      tags: security
+      tags: minecraft
       block:
 
         - name: Add a directory
@@ -118,26 +104,42 @@ Use vim to create a playbook file of your choosing and enter the following. Then
     - name: Restart fail2ban
       service:
         name: fail2ban
-        state: started
+        state: restarted
 ```
 
-#### Verify your work!
+#### Challenge 1: Fix the playbook!
 
-1. Run your playbook in its entirety. Does it complete successfully?
+Run the playbook.
 
-2. Run your playbook a second time. Does the Fail2ban handler execute even though nothing has changed?
+`student@bchd:~$` `ansible-playbook ~/mycode/minecraft.yml`
 
-3. Change the `bantime` value in your playbook and run it again. Does the handler execute?
+Read the error messages, make corrections, and run the playbook again. Repeat this process until the playbook executes successfully.
 
-4. Use the `--list-tasks` and `--tags` options to confirm that each tag targets the appropriate tasks.
+### Debugging tip: Focus on one error at a time! Ansible's error messages often tell you exactly what is wrong, which parameters are supported, and where in the playbook the error occurred.
 
-    ```
-    ansible-playbook challenge.yml --tags security --list-tasks
-    ```
+#### Challenge 2: Test the error handling!
 
-5. Temporarily add a nonexistent package to the list of applications being installed. Run the playbook with the `install` tag. Does the rescue block execute? Are the applications uninstalled? Does the playbook report a failure?
+Just because the playbook runs successfully doesn't mean every task works! Remember that tasks within a rescue section only execute if a task within the associated block fails.
 
-6. Remove the nonexistent package and run the entire playbook again to restore the Minecraft server environment.
+Let's intentionally cause the installation to fail by overriding the `mc_packages` variable with the name of a nonexistent package.
+
+`student@bchd:~$` `ansible-playbook ~/mycode/minecraft.yml --tags install -e 'mc_packages=["this-package-definitely-does-not-exist"]'`
+
+There may be additional errors hiding in the rescue section. Find and fix them!
+
+You will know you have successfully repaired the rescue section when the uninstall task completes successfully and the following intentional error message appears:
+
+```
+Installation failed! Applications have been uninstalled.
+```
+
+#### Challenge 3: Restore the Minecraft server!
+
+Now that you've successfully tested the error handling, run the playbook normally one final time.
+
+`student@bchd:~$` `ansible-playbook ~/mycode/minecraft.yml`
+
+If the playbook executes without errors, congratulations! You've completed the challenge!
 
 <details>
 <summary>Click here for the solution!</summary>
@@ -154,6 +156,10 @@ Use vim to create a playbook file of your choosing and enter the following. Then
   vars:
     mc_server_link: https://piston-data.mojang.com/v1/objects/c9df48efed58511cdd0213c56b9013a7b5c9ac1f/server.jar
 
+    mc_packages:
+      - default-jre-headless
+      - fail2ban
+
   tasks:
 
     - name: Install applications
@@ -166,34 +172,29 @@ Use vim to create a playbook file of your choosing and enter the following. Then
 
         - name: Install apps for Minecraft server
           apt:
-            name:
-              - default-jre-headless
-              - fail2ban
+            name: "{{ mc_packages }}"
+            # FIX: The variable is named mc_packages,
+            # not minecraft_packages.
             state: present
-          # FIX: Removed ignore_errors. Ignoring an error
-          # prevents that error from triggering the rescue block.
 
       rescue:
 
         - name: Uninstall applications
           apt:
             name:
+              # FIX: packages_to_remove is not a valid
+              # parameter for the apt module.
               - default-jre-headless
               - fail2ban
             state: absent
-            # FIX: "present" installs packages.
-            # "absent" uninstalls packages.
 
         - name: Announce installation failure
           fail:
             msg: "Installation failed! Applications have been uninstalled."
-          # FIX: The debug module only displays a message.
-          # The fail module displays a message AND intentionally
-          # causes the playbook to fail.
+            # FIX: The fail module uses msg, not message.
 
     - name: Setup fail2ban (SSH protection)
       tags: security
-      # FIX: This block configures security, not Minecraft.
       block:
 
         - name: Configure fail2ban
@@ -205,8 +206,8 @@ Use vim to create a playbook file of your choosing and enter the following. Then
               backend = systemd
               bantime = 20000
           notify: Restart fail2ban
-          # FIX: The notify value must match the handler's
-          # name (or its listen topic).
+          # FIX: The notify value must match the name
+          # of an existing handler.
 
         - name: Ensure fail2ban is running
           service:
@@ -216,7 +217,6 @@ Use vim to create a playbook file of your choosing and enter the following. Then
 
     - name: Download Minecraft server JAR file
       tags: minecraft
-      # FIX: This block prepares Minecraft, not security.
       block:
 
         - name: Add a directory
@@ -228,7 +228,7 @@ Use vim to create a playbook file of your choosing and enter the following. Then
         - name: Download Minecraft server
           get_url:
             url: "{{ mc_server_link }}"
-            # FIX: get_url uses the "url" parameter, not "src".
+            # FIX: The get_url module uses url, not src.
             dest: "/home/{{ ansible_user }}/minecraft/minecraft_server.jar"
           become: no
 
@@ -238,10 +238,6 @@ Use vim to create a playbook file of your choosing and enter the following. Then
       service:
         name: fail2ban
         state: restarted
-        # FIX: "started" ensures the service is running but
-        # does nothing if it is already running.
-        # "restarted" restarts the service, allowing it to
-        # load the updated configuration.
 ```
 
 </details>
