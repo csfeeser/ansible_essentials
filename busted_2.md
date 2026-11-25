@@ -1,9 +1,9 @@
 
-# Thursday Morning Challenge: Minecraft Mayhem!
+# Troubleshooting Challenge: Minecraft Mayhem!
 
 <img src="https://geekflare.com/wp-content/uploads/2021/10/minecraft-hosting-vultr.png" width="500"/>
 
-Good morning! Today's troubleshooting challenge will involve the following concepts from yesterday:
+This troubleshooting challenge will involve the following concepts:
 
 - Error handling
 - Handlers
@@ -22,7 +22,7 @@ Use vim to create the following playbook.
 
 ```yaml
 ---
-- name: Thursday morning challenge
+- name: Minecraft debug challenge
   hosts: zoidberg
   connection: ssh
   gather_facts: no
@@ -147,7 +147,7 @@ If the playbook executes without errors, congratulations! You've completed the c
 
 ```yaml
 ---
-- name: Thursday morning challenge
+- name: Minecraft debug challenge
   hosts: zoidberg
   connection: ssh
   gather_facts: no
